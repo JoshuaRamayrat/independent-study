@@ -1,0 +1,45 @@
+Golang Tutorial and Notes
+
+Interfaces
+
+- C++ provides classes, subclasses, and templates.
+- Go provides 'interfaces'.
+	- 'interfaces' are similar to a C++ pure abstract class.
+	- 'types' providing 'methods' named in the interface are 
+	  really implementations of that interface.
+
+	type myType struct
+	{ 
+		i int 
+	}
+	func (p *myType) Get() int 
+	{ 
+		return p.i 
+	}
+
+
+	- method 'Get' associated with 'myType'.
+	- receiver is named 'p' in the function body
+
+	type myInteger int
+	
+	func (p myInteger) Get() int 
+	{ 
+		return int(p) 
+	} 
+	func f(i int)
+	{}
+
+	var v myInteger
+
+	// f(v) is invalid.
+	// f(int(v)) is valid.
+	// int(v) has no defined methods.
+
+	type myInterface interface
+	{
+		Get() int
+		Set(i int)
+	}
+
+

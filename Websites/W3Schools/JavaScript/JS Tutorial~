@@ -1,0 +1,189 @@
+- JS Introduction
+
+	- JavaScript Can Change HTML Content
+
+		- JavaScript HTML method: getElementById()
+
+			- document.getElementById("demo").innerHTML = "Hello JavaScript";
+
+			- document.getElementById('demo').innerHTML = 'Hello JavaScript';
+
+	- JavaScript Can Change HTML Attributes
+
+		- changing the src attribute of an <img> tag
+
+		<!DOCTYPE html>
+		<html>
+		<body>
+
+		<h2> What can JavaScript do? </h2>
+		<p> JavaScript can change HTML attributes.</p>
+		<p> In this case JavaScript changes the src (source) attribute of an image. </p>
+
+		<button onclick = "document.getElementById('myImage').src='pic_bulbon.gif' "> Turn on the light </button>
+
+		<img id = "myImage" src = "pic_bulboff.gif" style = "width:100px">
+
+		<button onclick = "document.getElementById('myImage').src = 'pic_bulboff.gif' "> Turn off the light </button>
+
+		</body>
+		</html>
+
+	- JavaScript Can Change HTML Styles (CSS)
+
+		- Like changing the font size (style) of an HTML element.
+
+		document.getElementById("demo").style.fontSize = "35px";
+
+	- JavaScript Can Hide HTML Elements
+
+		- change the display style to hide the HTML elements.
+
+
+- JavaScript Where To
+
+	- The <script> Tag
+
+		- JS code is inserted between <script> & </script> tags in HTML code.
+
+		<script>
+			document.getElementById("demo").innerHTML = "My 1st JS";
+		</script>
+
+		- JS is the default scripting language in HTML
+
+	- JavaScript Functions and Events
+
+		- A JS function is a block of JS code.
+			- Executes when 'called'.
+			e.g. function is called when event occurs.
+		keywords: 'function' 'event'
+
+	JavaScript in <head> or <body>
+
+		- scripts can be placed in the head or body
+		any number of scripts can be made
+
+	- External JavaScript
+
+		- scripts can be placed in external files 
+			- these files can be called in HTML code.
+
+		- External file: myScript.js
+
+			function myFunc()
+			{
+				document.getElementById("demo").innerHTML = "everything changes";
+			}
+
+		- Using 'myScript.js' in another script:
+
+			<script src = "myScript.js"> </script>
+
+		- don't use <script> with external script files.
+
+	- External JavaScript Advantages
+		- separates HTML and code
+		- easier to maintain JS & HTML
+		- cached JS files speed up loading
+		- example usage:
+			<script src = "script1.js"> </script>
+			<script src = "script2.js"> </script>
+
+	- External References
+		- scripts can reference URL's or path's relative to page.
+		- example (full url link to a script):
+			<script src = "www.w3schools.com/js/script1.js"> </script>
+		- example (link to a script on the page you're on):
+			<script src = "script1.js"> </script>
+
+- JS Output
+	- JavaScript Display Possibilities
+		- writing into an HTML element
+			innerHTML
+		- writing into an HTML output
+			document.write()
+		- writing into an alert box
+			window.alert()
+		- writing into the browser console
+			console.log()
+	- Using innerHTML
+		- to access an HTML element
+			document.getElementById(id)
+		- example:
+			<!DOCTYPE html>
+			<html>
+			<body>
+			
+			<h1> web </h1>
+			<p> paragraph </p>
+
+			<p id = "demo"> </p>
+
+			<script>
+				document.getElementById("demo").innerHTML = 5 + 6;
+			</script>
+
+			</body>
+			</html>
+	- Using document.write()
+		<script>
+		document.write(3+3);
+		</script>
+		
+		<button type = "button" onclick = "document.write(5+6"> Try it </button>
+
+	- Using window.alert()
+		<!DOCTYPE html>
+		<html>
+		<body>
+
+		<script>
+		window.alert("oh my god cholesterol");
+		</script>
+
+		</body>
+		</html>
+
+	- Using console.log()
+		- Windows and Linux OS, type F12 on a website to show GUI's w/ console included
+		- console.log() is for debugging purposes to display data.
+		<script>
+		console.log(1+1);
+		</script>
+
+- JS Statements
+	- JS Programs
+		- list of 'instructions' to be 'executed' by a computer.
+		- programming instructions are called 'statements'.
+		- JS programs are lists of programming 'statements'.
+		- HTML JS programs are executed by the web browser.
+	- JS Statements
+		- composed of
+			- values
+			- operators
+			- expressions
+			- keywords
+			- comments
+		- tell browser to write 'hey' in an HTML element with id = 'demo':
+			document.getElementById('demo').innerHTML = 'hey';
+
+	- JS semicolons
+		- end js statements with ;
+	- JS whitespace
+		- JS ignores whitespaces
+	- JS line length and line breaks
+		- avoid code that doesn't fit the page
+		- break it after an operator like so:
+			document.getElementById("demo").innerHTML =
+			"Hey Doll";
+	- JS code blocks
+		- you can group blocks of code inside { } 
+		function test()
+		{
+			document.getElementById("dem").innerHTML = "Doll";
+			document.getElementById("dem").innerHTML = "Hey!";
+		}
+	- JS keywords
+		- 
+

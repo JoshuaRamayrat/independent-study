@@ -1,0 +1,20 @@
+/* How would you call a function 'scan_olympic'
+ * passing 'competition' as an output argument?
+ */
+
+olympic_t scan_olympic(olympic_t *competitionArg)
+{
+	scanf("%s %s %d", competitionArg->event,
+			  competitionArg->entrant,
+			  competitionArg->country);
+	return competitionArg;
+}
+
+int main(void)
+{
+	olympic_t competition;
+
+	scan_olympic(&competition);
+
+	return (0);
+}
