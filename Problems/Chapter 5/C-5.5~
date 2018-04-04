@@ -1,0 +1,19 @@
+/*
+
+	C-5.5
+	Q:
+	Describe how to implement the stack ADT using 2 queues.
+	What is the running time of the 'push' and 'pop' functions?
+
+	N:
+	
+
+*/
+
+#include<queue>
+#include<iostream>
+#include<string>
+#include<vector>
+
+
+
