@@ -1,4 +1,3 @@
 # independent-study
-notes and exercises. 
-
-I'm using this repository as "proof of work" for books that I'm going through
+It's unfinished but the folders contain notes and exercises to books that I'm going through.
+The subjects consist of Computer Science, Manufacturing, and Mechatronics topics.
