@@ -1,0 +1,9 @@
+Question:
+	For each of the two conditions in the inner 
+	for loop in insertion sort (Algo- rithm 2.2), 
+	describe an array of N items where that condition 
+	is always false when the loop terminates.
+
+Answer:
+	An empty array or an array with one element
+

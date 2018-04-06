@@ -1,0 +1,211 @@
+Content of the book
+
+- organized into 8 MAJOR PARTS
+	
+	Overview: 
+
+	- what operating systems are, 
+	- what they do, 
+	- how they are designed and constructed. 
+	- operating systems for PC, server, & mobile devices.
+	
+
+	Process management
+
+	- CH3-7
+	- process conept & concurrency as the heart of modern OS.
+	- process: unit of work in a system
+	- system consists of a collection of concurrently executing
+	  processes
+	  	- some are os processes. execute system code
+		- some are user processes. execute user code
+	- methods for 
+		- process scheduling
+		- interprocess communication
+		- process synchronization
+		- deadlock handling
+	- thread discussion and multicore system & parallel prog issues
+
+
+	Memory management
+
+	- CH8-9
+	- managing main memory during process exec. 
+	- computer must keep several processes in memory
+		- for improving CPU utilization and user response speed.
+	- many different memory-management schemes
+		- algorithm effectiveness depends on situation
+
+
+	Storage management
+
+	- CH10-13
+	- how to handle 
+		- mass storage
+		- file system
+		- I/O
+	- file system- mechanism for storing/accessing data/programs.
+	- there are algorithms and structures for storage management.
+	- properties, advantages, disadvantages of algorithms
+	- I/O devices attaching to a computer vary widely
+		- operating system neds to provide a wide range
+		  of functionality to applications to control 
+		  all aspects of the device
+	- I/O devices are the slowest major component.
+		- they represent a 'performance bottleneck'
+		- performance issues with I/O devices examined
+	- also discussed:
+		- system I/O
+		- I/O system design
+		- interfaces
+		- internal system structures
+		- internal system functions
+
+
+	Protection and Security
+	
+	- CH14-15
+	- mechanisms for protection/security of computer systems
+	- process activities must be protected from one another.
+	- processes with proper authorization can:
+		- operate on files
+		- operate on memory
+		- operate on the CPU
+		- operate on other resources
+	- "protection": mechanism for controlling the access of
+		- programs
+		- processes
+		- users to computer-system resources.
+	- must be specified:
+		- controls to be imposed
+		- means of enforcement.
+	- "security" in this context:
+		- protects integrity of information
+		  stored in the system (data & code)
+		- physical resources of the system
+		  from unauthorized access, malicious destruction, 
+		  & accidental inconsistency
+	
+
+	Advanced topics
+	
+	- CH16-17
+	- 'virtual machines' and 'distributed systems' discussed
+	- CH16: relationship of VM's to OS's.
+		- hardware and software techniques to make 
+		  virtualization possible.
+	- CH17: distributed computing
+
+	
+	Case studies
+
+	- CH18-19
+	- Appendices A & B
+	- real operating systems
+		- Linux
+		- Windows 7
+		- FreeBSD
+		- Mach
+
+	9th edition considerations
+	- Multicore systems
+	- mobile computing
+	- virtualization
+
+	Chapter 1 - Introduction
+		- coverage of multiprocessor and multicore systems
+		- kernel data structures
+		- computing environments
+			- mobile systems
+			- cloud computing
+		- real-time systems
+
+	Chapter 2 - Operating-System Structures
+		- ui for mobile devices
+		- iOS
+		- Android
+		- Mac OS X (hybrid type system)
+
+	Chapter 3 - Processes
+		- multitasking in mobile OS's.
+		- multiprocess model support (google chrome)
+		- zombie & orphan processes (Unix)
+
+	Chapter 4 - Threads
+		- parallelism & Amdahl's law
+		- implicit threading
+			- OpenMP
+			- Apple's Grand Central Dispatch
+
+	Chapter 5 - Process Synchronization
+		- new section on mutex locks
+		- synchronization using 'OpenMP'
+	
+	Chapter 6 - CPU Scheduling
+		- coverage on Linux CFS scheduler
+		- Windows user-mode scheduling
+		- real-time scheduling algorithms
+
+	Chapter 7 - Deadlocks
+		
+	Chapter 8 - Main Memory
+		- swapping on mobile systems
+		  & Intel 32- and 64-bit architectures
+		- ARM architecture
+
+	Chapter 9 - Virtual Memory
+		- kernel memory management to include
+		Linux SLUB & SLOB memory allocators
+
+	Chapter 10 - Mass Storage Structure
+		- coverage of solid-state disks
+
+	Chapter 11 - File-System Interface
+	
+	Chapter 12 - File-System Implementation
+	
+	Chapter 13 - I/O
+		- update on technologies and performance numbers
+		- a/synchronous and non/blocking I/O
+		- vectored I/o
+
+	Chapter 14 - Protection
+
+	Chapter 15 - Security
+		- revised cryptography section
+	
+	Chapter 16 - Virtual Machines
+	
+	Chapter 17 - Distributed systems
+	
+	Chapter 18 - The Linux System
+
+	Chapter 19 - Windows 7
+
+	Chapter 20 - Influential Operating Systems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

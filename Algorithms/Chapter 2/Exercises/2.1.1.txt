@@ -1,0 +1,24 @@
+Trace how 'selection sort' sorts "E A S Y Q U E S T I O N"
+using the trace modelled by example algorithm 2.1
+
+E A S Y Q U E S T I O N
+A E S Y Q U E S T I O N
+A E E Y Q U S S T I O N
+A E E I Q U S S T Y O N
+A E E I N U S S T Y O Q
+A E E I N U O S T Y S Q
+A E E I N U O S S Y T Q
+A E E I N U O S S Q T Y
+
+
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+2.1 Elementary Sorts 
+
+	- 2 elementary sorting methods and 1 variation.
+	- reasons for studying:
+		- context for terminology 
+		- context for basic mechanisms
+		- more effective than "sophisticated algorithms"
+		- improves the efficiency of "sophisticated algorithms"
+
+	Rules of the game
+		- primary concern:
+			- rearranging 'arrays of items' 
+			- each item contains a 'key'
+		- rearrange alphabetically/numerically
+		- in Java:
+			- items are objects
+			- abstract notion of a key 
+				- captured in a built-in mechanism
+				- "Comparable interface"
+		- sort code addresses 'data' through 2 operations
+			- less()
+			- exch()
+				- makes code readable and portable.
+				- for studying performance and comparing.
+
+		Certification
+			- "assert isSorted(a);"
+				- to certify array entries are ordered after the short.
+				- test is only sufficient if exch() is used for changing aray entries.
+				- code for storing values into the array directly doesn't provide assurance.
+
+		Running time
+			- algorithm performance
+			- # of basic operations
+				- compare & exchanges
+				- access for read/write. 
+			- consistant coding style for hypotheses development.
+
+		Extra memory
+			- sorting algorithms divide into 2 basic types:
+				- sort in place. 
+					- no use of extra memory 
+					- except small function call stack or a constant number of instance variables)
+				- extra memory to hold a copy of array to be sorted. 
+
+		Types of data
+			- sort code is for 'comparable interface' (CI).
+			- when we create types of our own, 
+			  client code can sort that data type using the CI.
+			- for economy:
+				- v.compareTo(w): 
+				- v < w, return negative
+				- v = w, return zero
+				- v > w, return positive
+			- compareTo() implements a 'total order':
+				- reflexive
+				- antisymmetric
+				- transitive
+					-  
+	Selection Sort
+		- simplest algorithm
+			- find the smallest item and exchange 
+			  with the first entry in an array.
+		- Proposition A: uses N^2/2 compares and N exchanges
+				 to sort an array 'N'.
+		- Proof: for each 'i' from '0' to 'N-1', there is 
+			 one exchange and 'N-1-i' compares.
+			 The total 
+		Running time is insensitive to input
+			- runtime for ordered array is the same for unordered
+		Data movement is minimal
+			- uses 'N' exchanges
+			- number of array accesses is a linear function
+			  of array size.
+			- no other algorithms have this feature
+			  they're either quadratic or linearithmic.
+	Insertion Sort
+		- make space to insert the current item
+			- move larger items 1 position right.
+		- running time of insertion sort depends on
+		  initial order 
+		  	- if array is large and entries are already in order,
+			  the algorithm completes faster.
+			  (as opposed to reverse ordered or random)
+
+		- Prop B: Insertion sort: (N^2/4) compares. ~(N^2/4)
+			  exchanges to sort a randomly ordered array length 
+			  N. 
+			  - worst case: N^2/2 compares. N^2/2 exchanges.s
+			  - best case: N-1 compares. 0 exchanges.
+		- Proof: the number of compares/exchanges is visualized
+			 by the N-by-N diagram.
+			 	- count entries below the diagonal
+				- all of them - worst case
+				- best case - best case
+		- 
+

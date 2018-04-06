@@ -1,0 +1,18 @@
+Question:
+	Why not use selection sort for h-sorting in shellsort?
+
+Notes:
+	Shellsort is an extension of insertion sort.
+		Allows exchanges of entries that are far apart.
+		Produces partially sorted arrays for insertion sort to perform on.
+
+		Taking every 'hth entry' yields a sorted subsequence.
+		The entire array is called 'h-sorted'.
+		'h-sorted' array is h independent subsequences interweaved together.
+
+Answer:
+	We don't use selection sort because it's not making use of 
+	array entries that are far apart. Selection sort goes through
+	every entry until the smallest one. H-sorting skips array entries
+	to increase the efficiency of insertion sort.
+

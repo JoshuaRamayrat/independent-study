@@ -1,0 +1,152 @@
+
+- modern operating systems allow programs to operate independently 
+  of one another by employing "multitasking"
+  	- e.g. a GUI can run multiple applications/windows at the same time.
+
+14.1 Multitasking
+
+	Linear Versus Parallel Programming
+	- linear programming: each sequence of instructions depends
+	  on the completion of the previous instruction.
+	  	- very limiting approach
+		- world is actually "parallel"
+	- for parallelism, multiple tasks are accomplished
+	  by prioritization and scheduling.
+	
+	Multitasking as Time-Sharing
+	- originally developed for many users to share a single CPU
+		- called a "mainframe"
+	- portion of available CPU time was allocated. 
+		- called "time-sharing"
+		- rarely works well
+	- The mainframe is replaced by distributed computing environments
+	  consisting of a network of PCs.
+	  	- user can run many programs on a single CPU
+		- user still has control of that CPU
+
+	Preemptive Multitasking
+	- early implementation: programs use/give up control of the CPU
+		- not effective
+	- PCs can now interrupt programs for the CPU
+		- called "preemptive multitasking"
+		- program interrupted by hardware interrupt system.
+		- result:
+			- exact time at which program completes is 
+		  	  unknown.
+			- multiple programs appear as if they have
+			  uninterrupted access to the CPU.
+	- "pseudo-parallelism": programs appear to be running in parallel
+	  but are actually taking short turns using the CPU.
+
+	Time Slices and Parallelism
+	- operating system manages shares by allocating "time slices"
+	- "time slice": amount of CPU time allocated to a program
+			in a parallel programming environment
+	- scheduling policies depend on the complexity of the program
+	  and the priority of the program relative to others.
+	  	- determines the algorithms used for allocation of 
+		  the CPU time and scheduling order.
+	- "context switching": process of switching between programs
+	  by saving their state information.
+	  	- this happens very quickly that it appears as if 
+		  programs run in parallel.
+
+	Concurrent Programming
+	- concurrent programming: writing a set of program instructions
+	  that can execute @ the same time independently.
+
+14.2 Processes
+	
+	- program -> set of instructions stored in a file
+		  -> read into memory and executed.
+
+		  - each unique instance of an execuing program
+		  	- called a process
+			- given a unique identifier called a process ID
+			  (selected by operating system)
+	- information defining the state for a given process:
+		- program counter
+		- base memory address
+		- contents of the CPU registers
+			- all stored in a data structure by the OS.
+
+		- for context switches:
+			- suspended state info is stored
+			- executing state info is restored
+			- process begins execution.
+
+			- a lot of overhead w/ storing/executing
+			- reduce impact by using threads instead 
+			  of processes in the concurrent program.
+
+	Creating a Process
+
+	- child process: new process created by currently executing
+			 process called the 'parent process'.
+	- parent process: currently executing process that creates 
+			  one or more new child processes.
+
+	- processes are called using the 'fork()' function.
+
+	- Example usage:
+
+	  (Parent Process)
+
+		printf("Before fork() \n");
+		pid = fork();
+		printf("After fork() \n");
+
+	  (Child process)
+
+	  	printf ("Before fork() \n");
+		pid = fork();
+		printf ("After fork() \n");
+
+	- The child process is a 'copy' of the parent process.
+	- Their program counters have the same value.
+	- next statement to execute is the 'printf' after 'fork()'.
+
+	- The complexity of process relationships are analogous 
+	  to family relationships.
+
+	- Protocols of the 'fork()' function:
+		- return processID child value to the parent process
+		- return 0 value to the child process.
+		
+		- for an unsuccesful fork(), return -1 to the parent.
+		- the return value is used to control execution.
+
+	- Example 14.2
+
+		#include <unistd.h>
+		//...
+		pid_t pid;
+		//...
+		pid = fork();
+		//...
+		if (pid < 0)
+		{
+			// assume unsuccesful
+			printf ("error creating process \n");
+		}
+		else if (pid == 0)
+		{
+			// code executed in succesful child process
+			printf("Child ID %d \n", getpid());
+		}
+		else 
+		{
+			// code executed in succesful parent process
+			printf ("Parent ID %d 
+				 Child ID %d \n", getpid(), pid);
+		}
+
+
+
+
+
+
+
+
+
+

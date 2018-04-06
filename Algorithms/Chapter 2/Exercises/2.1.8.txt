@@ -1,0 +1,11 @@
+Question:
+	An array with 1 of 3 elements.
+	Insertion sort is performed.
+	What is the runtime? (i.e. linear -> quadratic)
+
+Answer:
+	Insertion sort should still be O(n^2) 
+	in the worst case and O(n) in the best case.
+
+	The array only having 1 of 3 elements shouldn't 
+	affect the way the algorithm sorts through it. 
