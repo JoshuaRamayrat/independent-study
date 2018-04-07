@@ -1,3 +1,10 @@
+UNFINISHED
+
+YOU LEFT OFF AT SECTION 1.2
+
+
+
+
 Introduction
 - operating system: program to manage hardware
 	- intermediary btwn user and hardware
@@ -89,6 +96,45 @@ Introduction
 
 1.2 Computer-System Organization
 
+- computer system structure must be known before it's way of operation
+
+1.2.1 Computer-System Operation
+
+- general purpose computer:
+	- 1+ CPU
+	- # of device controllers
+		disk drive
+		audio device
+		video displays
+	- common bus to access shared memory
+- initial program to start when computer is powered up
+	- called a 'bootstrap program'
+	- stored in hardware
+		read only memory
+		electrically erasable programmable read only memory
+			"firmware" umbrella term
+- bootstrap program must locate the OS kernel and load it into memory
+- post-kernel locating
+	- 'system programs' outside of the kernel are loaded 
+	  into memory at boot time
+	- called 'system processes' or 'system daemons'
+		- runs the entire time the kernel is running
+	- on 'UNIX', the first process is 'init'.
+		- init starts other daemons.
+	- after the call to 'init', the system is fully booted.
+	- system waits for events to occur.
+- occurence of an event is signaled by an 'interrupt'
+  from either the hardware or software. 
+	- hardware interrupt: signal sent to CPU
+	- software interrupt: system call/monitor call (special operation)
+
+- process followed for interrupts:
+	- CPU is interrupted
+	- CPU transfers execution to a fixed location
+	- the 'fixed location' contains a starting adress
+		- address contains 'service routine' for the interrupt.
+	- interrupt service routine (ISR) executes
+	- upon completion of ISR, CPU resumes interrupted computation
 - 
 
 1.11.8 Real-Time Embedded Systems
