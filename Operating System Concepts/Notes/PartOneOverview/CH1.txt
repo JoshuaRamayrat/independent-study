@@ -1,0 +1,143 @@
+Introduction
+- operating system: program to manage hardware
+	- intermediary btwn user and hardware
+- system structure:
+	- system startup
+	- I/O
+	- storage
+
+- large & complex so it's created piece-by-piece
+	- each piece is a well-delineaed portion of the system
+	- carefully defined inptus, outputs, & functions
+
+- major components of a computer system
+- OS functions
+
+- data structures in OS
+- computing environments
+- open source OS's
+
+- Abstract view:
+
+	COMPUTER HARDWARE
+		OPERATING SYSTEM
+			(SYSTEM & APPLICATION PROGRAMS)
+			COMPILER
+				USER1
+			ASSEMBLER
+				USER2
+			TEXT EDITOR
+				USER3
+			...
+			DATABASE SYSTEM
+				USER'N'	
+
+1.1 What Operating Systems Do
+
+- computer system divided into 4 components
+	- hardware
+	- operating system
+	- application programs
+	- users
+
+- basic computing resources for system
+	- hardware
+		- central processing unit (CPU)
+		- memory
+		- input/output (I/O) devices
+
+	- ways in which resources are used to solve problems
+		- application programs
+			- word processors
+			- spreadsheets
+			- compilers
+			- web browsers
+	- operating system controls hardware
+	- OS coordinates use among programs/users
+	- OS is analogous to a government
+		- provides 'environment' for other programs to work
+
+1.1.1 User View
+
+- OS for a user: monitor, keyboard, mouse, system unit
+	- for 'ease of use'
+
+- other cases - users sit at workstations
+	- connected to other workstations/servers
+	- users have dedicated resources
+	- share resources such as:
+		- networking
+		- servers
+		- file servers
+		- computer servers
+		- print servers
+
+1.1.2 System View
+
+- OS: program most intimately involved w/ hardware
+- OS is a 'resource allocator'
+- OS manages resources
+	CPU time
+	memory space
+	file-storage space
+	I/O devices
+	...
+- different view - OS needs to control I/O devices and user programs.
+	- 'control program'
+		- manages user prog. execution
+		- operation/control of I/O devices
+
+1.2 Computer-System Organization
+
+- 
+
+1.11.8 Real-Time Embedded Systems
+
+- most prevalent form of computers
+- found everywhere:
+	car engines
+	manufacturing robots
+	DVDs
+	microwave ovens
+
+- specific tasks
+- usually little or no user interface
+- monitors and manages hardware devices
+	automobile engines
+	robotic arms
+
+- embedded systems vary considerably
+	- general-purpose computer with Linux OS
+	- special-purpose embedded OS with just functionality
+
+- hardware devices with application-specific integrated circuits
+  ASICs to perform tasks without an OS
+
+- computerizing an entire house
+	heating control
+	lighting control
+	alarm system
+	coffee maker
+	refrigerator
+
+- embedded systems always run on 'real-time operating systems'
+	- rigid time requirements on processor operation and data flow
+	- sensor data to computer
+	- computer analyzes data and adjusts control of sensor input
+
+- examples of real-time systems
+	- systems controlling scientific experiments
+	- medical imaging systems
+	- industrial control systems
+	- display systems
+	- automobile-engine fuel-injection systems
+	- home-appliance controllers
+	- weapon systems
+
+- real-time system: well-defined, fixed time constraints
+	- processing done within time constraints.
+	- only functions correctly if results are delivered in time. 
+
+- CH6: scheduling facility to implement real-time functionality in an OS
+- CH9: memory management design for real-time computing.
+- CH18-19: real-time components for Linux and Windows7 OS.
