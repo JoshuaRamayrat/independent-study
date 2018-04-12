@@ -1,11 +1,10 @@
 UNFINISHED
 
-YOU LEFT OFF AT SECTION 1.2
 
 
-
-
-Introduction
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1. Introduction
 - operating system: program to manage hardware
 	- intermediary btwn user and hardware
 - system structure:
@@ -94,6 +93,10 @@ Introduction
 		- manages user prog. execution
 		- operation/control of I/O devices
 
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 1.2 Computer-System Organization
 
 - computer system structure must be known before it's way of operation
@@ -135,8 +138,313 @@ Introduction
 		- address contains 'service routine' for the interrupt.
 	- interrupt service routine (ISR) executes
 	- upon completion of ISR, CPU resumes interrupted computation
+
+- interrupts are very important
+	- interrupts -> interrupt service routine
+	- generic routine invoked to examine interrupt info.
+
+1.2.2 Storage Structure
+- CPU loads instructions only from memory
+- programs must be stored in memory then
+
+- "random-access memory" (RAM)
+	- main memory
+	- programs are run from rewritable memory
+
+- main memory -> 
+	semiconductor technology dynamic random-access memory (DRAM)
+	
+- ROM can't be changed
+	- static programs are stored here (e.g. bootstrap)
+	- EEPROM is changed infrequently
+		e.g. smartphones EEPROM for factory-programs
+
+- all forms of memory provide an 'array of bytes'
+	- each byte has its own address.
+- 'load' or 'store' instructions to specific memory addresses
+  provide a mean for interaction
+	- load -> move word from main memory to an internal register
+	- store -> move register content to main memory
+- von Neumann architecture
+	- instruction-execution cycle:
+		- instruction fetched from memory
+		- stored in the instruction register
+		- instruction is decoded
+		- operands fetched from memory
+		- operands stored in some internal register
+
+- the 'memory unit' sees only a stream of memory addresses
+  It doesn't know how they are generated
+  	instruction counter
+	indexing
+	indirection
+	literal addresses
+
+	instructions
+	data
+
+- Interested in sequence of memory addresses
+- programs and data -> main memory permanently
 - 
 
+1.2.3 I/O Structure
+- Storage - 1 of many types of I/O devices
+- most of OS code - managing I/O
+	- device nature varies
+	- system performance and reliability depends on it
+- general-purpose computer system
+	- multiple CPUs
+	- multiple device controllers
+		- all connected through a common bus
+
+- each 'device controller' is in charge of a specific device
+- >1 device to a controller is possible
+	- example:
+
+	small computer-systems interface (SCSI) controller
+		7+ devices
+
+- starting an I/O operation
+	- device driver loads device controller register
+	- 
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.3 Computer System Architecture
+
+- computer systems can be organized in many wys
+- categorized based on # of general-purpose processors
+
+1.3.1 Single-Processor Systems
+
+- almost all single-processor systems have other special-purpose
+  processors as well.
+  	- device-specific processors
+		disk
+		keyboard
+		graphics controllers
+	  (mainframes)
+	  	I/O processors
+
+- special-purpose processors run a limited instruction set
+  they don't run user processes. 
+
+- OS sends info about next task and monitors status
+- 
+
+1.3.2 Multiprocessor Systems
+- multiprocessor systems
+	parallel systems
+	multicore systems
+
+	Dominate computing landscape
+	Recently appearing in smartphones and tablets
+
+- advantages:
+	increased throughput
+	economy of scale
+	increased reliability
+
+- "graceful degradation"
+	- providing service proportional to the 
+	  level of surviving hardware
+
+- "fault tolerant"
+	- suffer failure of any single component and
+	  still continue operation
+- example: "HP NonStop"
+	- uses hardware and software duplication
+		- continued operation despite faults
+	- multiple pairs of CPUs work in lockstep
+
+- two types of "multiple-processor systems"
+	- asymmetric multiprocessing
+		- each processor is assigned a specific task
+		- boss processor controls the system
+		- other processors look to the boss
+		  for instructions
+		  	(or have 'predefined tasks')
+		- "boss-worker relationship"
+	- symmetric multiprocessing (SMP)
+		- all processors are peers
+		- perform all tasks of the OS
+		- no boss-worker relationship
+		- own set of registers & private cache
+		- processors must share certain
+		  data structures to avoid inefficiencies
+		  such as idle and overloaded CPUs
+		- 
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.5 Operating-System Operations
+- OS's are interrupt driven
+- events are signaled by 
+	- traps: software interrupt created by an error
+	  or a call to an OS serice by the user program.
+	- interrupts
+- General structure of a system is dictated by the 
+  OS's interrupt-driven nature
+- errors in one program should only affect that single program
+  and not other processes in other programs
+  	e.g.
+	- a process stuck in an infinite loop could
+	  affect affect other process operations
+
+- properly designed OSs prevent this type of occurence.
+
+1.5.1 Dual-Mode and Multimode Operation
+- distinguish between
+	- operating system code execution
+	- user-defined code execution
+
+- two separate modes of operation:
+	- user mode
+	- kernel mode 
+		(also called)
+		supervisor mode
+		system mode
+		privileged mode
+- dual modes of operation allow the OS to protect
+  from errant users.
+  	- harmful instructions are 'privileged instructions'
+	- 'privileged instructions are only executed
+	  in kernel mode. 
+	  	- executing in user mode traps it in the OS
+
+- switching to kernel mode is a 'privileged instruction'
+- other examples:
+	I/O control
+	timer management
+	interrupt management
+	...
+- extension beyond 2 modes:
+	- virtual machine manager VMM
+	- virtualization management software
+
+1.5.2 Timer
+- OS must maintain control over the CPU
+- user programs can't get stuck in an infinite loop
+  or fail to call system services and never
+  return control the OS.
+	- use a timer
+- timers are set to interrupt the computer after a 
+  specified period
+- period may be fixed
+- variable timer - implemented by a 
+  fixed rate clock and a counter
+- OS sets the counter
+	- interrupt occurs when counter = 0
+- 
+
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.6 Process Management
+- programs do nothing unless CPU executes instruction
+- 
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.8 Storage Management
+- To make the computer system convenient
+	- OS: logical & uniform view of info storage.
+	- 'the file' - logical storage unit that serves as 
+		       an abstraction of the physical properties
+		       of a storage device.
+
+1.8.1 File-System Management
+- File management - most visible component of an OS
+- computers store info on different types of physical media
+- files represent programs and data
+- Data files can be:
+	- numeric
+	- alphabetic
+	- alphanumeric
+	- binary
+- files can also be:
+	free-form: e.g. text files
+	fixed: e.g. fixed fields
+- files are organized into directories b/c it makes them easier to use.
+- desirable to control which user may access a file
+  and how that user may access it
+  	- read
+	- write
+	- append
+
+- OS is responsible for the following activities 
+  in connection w/ file management:
+  	- creating and deleting files
+	- creating and deleting directories to organize files
+	- supporting primitives for manipulating files and directories
+	- mapping files onto 2ndary storage
+	- backing up files on stable (nonvolatile) storage media
+- File-management techniques are discussed in CH11 and 12
+
+
+1.8.2 Mass-Storage Management
+- main memory is too small to accommodate all data and programs
+- data it holds are lost when power is lost
+	- 2ndary storage to back up main memory is needed
+
+- disks -> principle on-line storage medium 
+		for programs & data
+- programs such as :
+	compilers
+	assemblers
+	word processors
+	editors
+	formatters
+		- stored on a disk until loaded into memory
+- disk is used as source & destination
+- very important - disk storage management
+
+- OS activities for disk management:
+	- free-space management
+	- storage allocation
+	- disk scheduling
+
+- speed of operation of a computer hinges on the speeds of the disk
+  subsystem and algorithms to manipulate it
+
+- uses for storage
+	- disk data backup
+	- storage of seldom-used data
+	- long-term archieval storage
+
+- tertiary storage devices
+	magnetic tape drives
+	tapes
+	CD drives
+	DVD drives
+	platters
+
+1.8.3 Caching
+- important principle of computer systems
+- information is kept in a storage system (main memory)
+- cache is a 'fast storage system'
+- information is in either:
+	- the source (checked 2nd)
+	- the cache (checked 1st)
+
+- internal programmable registers
+	- index registers
+	- high-speed cache for main memory
+
+- programmer
+	register-allocation algorithms
+	register-replacement algorithms
+		which info to keep in
+			registers
+			main memory
+
+- caches have limited size
+	- cache management is important
+- 
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 1.11.8 Real-Time Embedded Systems
 
 - most prevalent form of computers

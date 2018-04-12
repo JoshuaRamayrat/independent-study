@@ -1,0 +1,457 @@
+Chapter 1. Introduction to ROS and Its Package Management
+
+- ROS concepts:
+	ROS master
+	nodes
+	parameter server
+	topic
+	message
+	service
+	actionlib
+
+- Why should we learn ROS?
+- Why we prefer ROS for a robot
+- Why we do not prefer ROS for a robot
+- Understanding the ROS file system level
+- Understanding the ROS computation graph level
+- Understanding ROS nodes, messages, topics, services, bags
+- Understanding ROS master
+- Using ROS parameter
+- Understanding ROS community level
+- Running ROS Master and ROS Parameter server
+- Creating a ROS package
+- Working with ROS topics
+- Adding custom msg and srv files
+- Working with ROS services
+- Working with ROS actionlib
+- Creating launch files
+- Applications of topics, services, and actionlib
+- Maintaining the ROS package
+- Releasing your ROS package
+- Creating a wiki page for your ROS package
+
+Why should we learn ROS?
+
+- features provided:
+	message passing
+	distributed computing
+	code reusing
+	...
+
+- ROS Industrial for manufacturing applications
+- ROS will be an essential requirement for a robotics engineer
+
+Why we prefer ROS for robots
+- High-end capabilities 
+	ROS comes w/ ready to use capabilities
+	SLAM (Simultaneous Localization and Mapping)
+	AMCL (Adaptive Monte Carlo Localization)
+	
+- Tons of tools
+	debugging
+	visualizing
+	simulations
+		rqt_gui
+		RViz
+		Gazebo
+	software frameworks that have these tools are rare
+
+- Support high-end sensors and actuators
+	device drivers
+	interface packages
+	examples:
+		Velodyne-LIDAR
+		Laser scanners
+		Kinect
+		Dynamixel servos
+
+- Inter-platform operability
+	- message-passing middleware allows communicating
+	  between different nodes. 
+	- nodes can be programmed in any language
+	  with ROS client libraries
+	  	C++
+		C
+		Python
+		Java
+
+- Modularity
+	- main problem is most robots
+		- if 1 thread dies, robot stops
+	- Solution for ROS:
+		- Different nodes are written for each process
+		- Robust methods in the event that 
+		  a sensor or motor fails
+
+- Concurrent resource handling
+	- handling hardware resources by more than 2 processes
+	  is apparently hard.
+	- example:
+		processing an image from a camera for:
+			face detection
+			motion detection
+				write code to do both
+					or 
+				write single-threaded code for concurrency
+		2 features in the thread
+			- application behavior gets difficult to debug
+		- In ROS, access devices
+				- use ROS topics
+				- from ROS drivers
+		- any ROS node can 'subscribe to the image message'
+		  from the ROS camera driver and each node can
+		  perform different functionalities.
+			- reduces computation complexity
+			- benefits debugging the entire system
+
+- Active community
+	- Always check for
+		software support
+		developer community
+	  before choosing a library or software framework.
+	- No guarantee of support from an open source tool
+
+Why some do not prefer ROS for robots
+(Why would I even buy the book if I wanted to know this information)
+- Difficulty in learning:
+- Difficulties in starting w/ simulation:
+- Difficulties in robot modeling:
+- Need for a comoputer:
+- ROS in commercial robot products:
+
+Understanding the ROS file system level
+- ROS files are organized on the hard disk 
+  in a particular fashion.
+
+  ROS File System Level
+  	Meta Packages
+		Packages
+			Package Manifest
+			Messages
+			Services
+			Codes
+			Misc
+
+- Explanation of each block in the file system
+	- Packages: 
+		- most basic unit of ROS software
+		- contains the following:
+			ROS runtime proces (nodes)
+			libraries
+			configuration files
+			...
+			(all organized together as a single uni)t
+
+	- Package manifest:
+		- inside a package containing info about:
+			package
+			author
+			license
+			dependencies
+			compilation flags
+			...
+		- package.xml file inside ROS package
+		  (manifest file of package)
+	- Meta packages:
+		- group of packages for a special purpose
+		- Electric & Fuerte
+		- simplicity and meta packages came to existence
+		- example:
+			ROS navigation stack
+	- Meta packages manifest:
+		- similar to package manifest
+		- includes
+			runtime dependencies
+			declare an export tag
+	- Messages:
+		type of info snt from one ROS process to the other
+		(my_package/msg/ MyMessageType.msg)
+		extension of the message file is .msg
+	- Services:
+		request/reply interaction btwn processes
+		(my_package/srv/MyServiceType.srv)
+	- Repositories
+		Maintained using a Version Control System (VCS)
+			Git
+			subversion (svn)
+			mercurial (hg)
+			...
+		package in repositories are released
+		using a catkin release automation tool
+			called bloom
+
+ROS packages
+- config: all configuration files used in this ROS 
+	  package are kept in this folder.
+	  	common practice: name the folder 'config'
+		keep configuration files in it.
+
+- include/package_name:
+	folder contains headers & libraries
+
+- scripts:
+	contains executable python scripts
+
+- src:
+	stores C++ source code
+
+- launch:
+	- contains launch files to launch 1+ ROS nodes
+
+- msg:
+	- folder contains custom message definitions
+
+- srv:
+	- contains service definitions
+
+- action:
+	- contains action definition
+	- more about actionlib later
+
+- package.xml
+	- package manifest file of the corresponding package
+
+- CMakeLists.txt:
+	- CMake build file of corresponding package
+
+- catkin_create_pkg:
+	- command used to create a new package
+
+- rospack:
+	- get info about package in the file system
+
+- catkin_make:
+	- used to build packages in the workspace
+
+- rosdep:
+	- install system dependencies required
+	  for this package
+
+- roscd:
+	- used to change package folder
+	- give argument a package name
+		switch to that package folder
+
+- roscp:
+	- used to copy a file from a package
+
+- rosed:
+	- used to edit a file
+
+- rosrun:
+	- run an executable inside a package
+
+- structure of a package.xml:
+
+	<?xml version="1.0"?>
+	<package>
+		<name>hello_world</name>
+		<version>0.0.0</version>
+		<description>The hello_world package</description>
+
+		<maintainer email="qboticslabs@gmail.com">Lentin 
+			Joseph</maintainer>
+		<license>BSD</license>
+		<url type="website">http://wiki.ros.org/hello_world</url>
+		<author email="qboticslabs@gmail.com">Lentin Joseph</author>
+
+		<buildtool_depend>catkin</buildtool_depend>
+		<build_depend>roscpp</build_depend>
+		<build_depend>rospy</build_depend>
+		<build_depend>std_msgs</build_depend>
+
+		<run_depend>roscpp</run_depend>
+		<run_depend>rospy</run_depend>
+		<run_depend>std_msgs</run_depend>
+
+		<export>
+		</export>
+	</package>
+
+	- contains the following:
+		package name
+		version of the package
+		package description
+		author details
+		package build dependencies
+		runtime dependencies
+
+		<build_depend></build_depend>
+			Includes packages to build 
+			source code of the package
+		<run_depend></run_depend>
+			packages for runtime of the package node
+
+
+ROS meta packages
+- specialized packages containing only the package.xml file
+- they group packages as a single logical package
+
+	<export>
+		<metapackage/>
+	</export>
+
+- in meta packages:
+	no <buildtool_depend> dependencies for 'catkin'
+	only <run_depend> dependencies
+		(packages grouped in the meta package)
+- ROS navigation stack is a good example of meta packages.
+
+
+$ roscd navigation
+	(Open package.xml using gedit text editor)
+
+$ gedit package.xml
+	(a 'stripped-down' version)
+		<package>
+			<name>navigation</name>
+			<version>1.12.2</version>
+			...
+			<buildtool_depend>catkin</buildtool_depend>
+			...
+			<run_depend>amcl</run_depend>
+			<run_depend>carrot_planner</run_depend>
+			...
+			<export>
+				<metapackage/>
+			</export>
+		</package>
+
+ROS messages
+- ROS nodes can publish data having a particular type
+- datatype descriptions are used to generate
+  source code for the appropriate message type
+  in different target languages
+- data type descriptions are stored in .msg files
+  in the msg subdirectory of a ROS packae
+	- 2 types for the message definition:
+		 fields
+		 	field type
+			field name
+		 constants
+		 	defining a constant value in the message file
+
+- example of message definitions:
+	int32 number
+	string name
+	float32 speed
+		1st part: field type
+		2nd part: field name
+
+Primitive type
+	bool(1)
+	int8
+	uint8
+	int16
+	uint16
+	int32
+	uint32
+	int64
+	uint64
+	float32
+	float64
+	string
+	time
+	duration
+	
+Serialization
+	unsigned 8-bit int
+	signed 8-bit int
+	unsigned 8-bit int
+	signed 16-bit int
+	unsigned 16-bit int 
+	signed 32-bit int
+	unsigned 32-bit int
+	signed 64-bit int
+	unsigned 64-bit int
+	32-bit IEEE float
+	64-bit IEEE float
+	ascii string(4)
+	secs/nsecs unsigned 32-bit ints
+	secs/nsecs signed 32-bit ints
+
+C++
+	uint8_t(2)
+	int8_t
+	uint8_t
+	int16_t
+	int32_t
+	uint32_t
+	int64_t
+	uint64_t
+	float
+	double
+	std::string
+	ros::Time
+	ros::Duration
+
+Python
+	bool
+	int
+	int(3)
+	int
+	int
+	int
+	int
+	long
+	long
+	float
+	float
+	string
+	rospy.Time
+	rospy.Duration
+
+Robot joint transforms (TF)
+	uint32 seq
+	time stamp
+	string frame_id
+
+$rosmsg show std_msgs/Header
+
+The ROS services
+- type request/response communication btwn ROS node
+- 1 node sends a request and waits until it gets
+  a response from the other node.
+- request/response communication is also using the ROS 
+  message description
+- similar to message definition in the .msg file
+	- service definition in the .srv file
+	  Kept inside the 'srv' sub directory of the package
+
+#Request message type
+string str
+---
+#Response message type
+string str
+
+'Request' & 'Response' are strings
+(upcoming sections shows how it works with ROS services)
+
+Understanding the ROS computation graph level
+- computation in ROS
+	- network of process called 'ROS nodes'
+- computation network - computation graph
+- main concepts in the computation graph:
+	ROS Nodes
+	Master
+	Parameter server
+	Messages
+	Topics
+	Services
+	Bags
+
+- ros-comm (stack)
+	(ROS communication related packages)
+	core client libraries
+		roscpp
+		rospython
+	topics
+	nodes
+	parameters
+	services
+	rostopic
+	rosparam
+	rosservice
+	rosnode
+
+	- middleware packages called ROS Graph layer

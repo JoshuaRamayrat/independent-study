@@ -1,0 +1,117 @@
+Operating-System Structures
+- OS provides environment for program execution
+- designing a new OS is a major task
+- goals of system must be defined before
+- This chapter explores:
+	viewpoint of user
+	viewpoint of programmer
+	viewpoint of OS designer
+	OS services
+		how they're provided
+		how they're debugged
+		methodologies for design
+
+2.1 Operating-System Services
+- Figure 2.1: relation of Os services
+
+
+	User and other system programs
+
+		GUI | batch | command line
+			User interfaces
+
+				System Calls
+				services
+		Program execution|I/O operations|file systems|
+		communication|resource allocation|accounting|
+		error detection|protection & security
+
+		operating system
+
+	hardware
+
+- user interface
+	- all OS's have a user interface
+	  that takes several forms
+	  	- command-line interface (CLI)
+		- batch interface
+			commands/directives entered into files
+			files execute
+		- graphical user interface
+			window system
+			pointing device to direct I/O
+			choose from menues
+
+- program execution
+	- load program into memory and run it.
+	- program must end its execution
+		normally/abnormally(error)
+
+- I/O operations
+	- running program may require I/O
+
+- File-system manipulation
+	- programs need to
+		create files
+		delete files
+		search files
+		list file information
+		read files/directories
+		write files/directories
+
+- Communications
+	- one process -> info exchange with another process
+	- shared memory
+		2 processes read/write shared section of mem
+
+- Error detection
+	- OS must detect and correct errors constantly
+	- Errors occur in the CPU & memory hardware
+
+- Resource allocation
+	- 
+
+2.2.1 Command Interpreters
+- some OS's include the command interpreter in the kernel
+- Windows and Unix
+	- command interpreter as a special program
+	  that is running when a job is initiated
+	  or when a user first logs on
+- 'shells' - multitude of command interpreters
+- several different shells to choose from
+	Bourne shell
+	C shell
+	Bourne-Again shell
+	Korn shell
+		similar functionality for getting and 
+		executing the user-specified command:
+			create
+			delete
+			list
+			print
+			copy
+			execute
+			...
+				MS-DOS and UNIX shells
+- unix command to delete a file
+	rm file.txt
+
+2.2.2 Graphical User Interfaces
+
+2.2.3 Choice of Interface
+- doesn't really matter it's up to the user
+- 'system administrators who manage computers
+  power users who have deep knowledge of a system 
+  	all frequently use command-line interface
+
+2.3 System Calls
+- 'system calls': interface to the services made 
+		  available by an operating system
+- routines written in C/C++
+
+- illustration of system call usage
+	- write a simple program to read data
+	  from one file
+	- copy the data to another file
+
+- 
