@@ -455,3 +455,55 @@ Understanding the ROS computation graph level
 	rosnode
 
 	- middleware packages called ROS Graph layer
+
+- Abstractions of each of the concepts
+	- Nodes:
+		process that performs the computation
+		- each ROS node is written using 
+		  the ROS client libraries such as 
+		  roscpp & rospy
+		- many nodes in a robot to perform different
+		  kinds of tasks
+		- aim of ROS nodes: build simple processes
+		  rather than a large process with all functionality
+
+	- Master:
+		- name registration and lookup
+		  to the rest of the nodes
+		- Nodes can't find each other
+		  exchange messages 
+		  invoke services
+		  	w/out a ROS master
+
+	- Parameter Server:
+		- data is stored in a central location.
+		- All nodes access and modify these values.
+
+	- Messages:
+		- nodes communicate using messages (wow)
+		- messages -> data structure
+		- standard primitive types (int, bool, etc.)
+	
+	- Topics:
+		- each message in ROS is transported
+		  using 'named buses' called topics.
+		  	(whatever that means)
+		- node sends a message through a topic
+			node 'publishes' a topic
+		- node receives a message 
+			node 'subscribes' to a topic
+		- publishing and subscribing nodes are unaware
+		  of each other
+		- production of info is 'decoupled'.
+		- 
+
+	- Services:
+		- publish/subscribe model isn't enough sometimes
+		  and 
+		- 'ROS services':
+			- 
+	- Bags:
+		- format for saving & playing back ROS 
+		  message data
+		- important mechanism for storing data
+			- e.g. sensor data

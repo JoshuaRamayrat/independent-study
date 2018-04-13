@@ -1,0 +1,104 @@
+- this chapter describes 'searching' algorithms.
+	- fundamental to information processing
+- the term 'symbol table' is an abstraction
+	- 'value': information that's saved
+	- 'key': way to search for a value
+		- number of keys and values depends on the application
+- efficient 'symbol tables' are a significant computational challenge. 
+- 'symbol tables' are sometimes called 'dictionaries
+	- 'key': word
+	- 'value': entry associated with the word (e.g. definition, pronunciation, etymology')
+
+- 3 classic data structures to support 'symbol-table implementations':
+	- binary search trees
+	- red-black trees
+	- hash tables
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+3.1 Symbol Tables
+- primary purpose is to associate a value with a key
+- supports 2 operations:
+	- insert (put): put a new pair into the table
+	- search (get): get the value associated with the key
+
+- examples of symbol table applications:
+	- application: dictionary
+		purpose of search: find definition
+		key: word
+		value: definition
+
+	- application: book index
+		purpose of search: find relevant pages
+		key: term
+		value: definition
+	
+	- application: file share
+		purpose of search: find song to download
+		key: name of song
+		value: computer ID
+
+	- application: account management
+		purpose of search: process transactions
+		key: account number
+		value: transaction details
+
+	- application: web search
+		purpose of search: find relevant web pages
+		key: keyword
+		value: list of page names
+
+	- application: compiler
+		purpose of search: find type and value
+		key: variable name
+		value: type and value
+
+API
+	- the symbol table is an abstract data type
+		- represents defined set of values and operations
+		  on values
+		- clients and implementations can be developed separately
+	- operations are defined by specifying 
+	  the application programming interface (API)
+	  	- the API provides a contract btwen client & implementation
+
+	- API for a generic basic symbol table
+
+		public class ST<Key, Value>
+			ST()
+			void put(Key key, Value val)
+			Value get(Key key)
+			void delete(Key key)
+			boolean contains(Key key)
+			boolean isEmpty()
+			int size()
+			Iterable<Key> keys()
+
+Generics
+	- 
+Duplicate keys
+	- only 1 value per key
+	- same key-value pairs are replaced by the newer one
+		- "associative array abstraction"
+		- 'symbol table' is like an array
+
+Null keys
+	-
+Null values
+	- 
+Deletion
+	-
+Shorthand methods
+	-
+Iteration
+	-
+Key equality
+	-
+
+Ordered symbol tables
+	- keys: 'Comparable objects'
+		- a.compareTo(b): compare 2 keys 'a' and 'b'
+
+
+

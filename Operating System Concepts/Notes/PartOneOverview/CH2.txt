@@ -109,9 +109,17 @@ Operating-System Structures
 		  available by an operating system
 - routines written in C/C++
 
-- illustration of system call usage
+- illustration of system call usage:
 	- write a simple program to read data
-	  from one file
-	- copy the data to another file
+	  from one file and copy the data to another file
+		- 1st input: name of 2 files
+			- input file and output file
+		- 1 approach - program asks user for the names
+			- sequence of system calls:
+				- write prompt message to screen
+				- read from keyboard the chars
+				  that define the 2 files
 
-- 
+
+- Even just simple programs make heavy use of the operating system
+	- 
