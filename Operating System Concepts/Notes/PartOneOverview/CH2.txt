@@ -119,7 +119,111 @@ Operating-System Structures
 				- write prompt message to screen
 				- read from keyboard the chars
 				  that define the 2 files
+- when both files are set up
+	- enter a loop that:
+		- reads from the input file
+		- writes to the output file
+
+	- each read/write must return status info regarding error cond.
+		- read:
+			end of file reached
+			hardware failure in read (parity error)
+		- write:
+			(various errors, depends on output device)
+			no more disk space
+
+	Figure 2.5 Example of how system calls are used
+		source file
+			Acquire input file name
+			write prompt to screen
+			accept input
+			acquire output file name
+			write prompt to screen
+			accept input
+			open the input file
+			if file doesn't exist, abort
+			create output file
+			if file exists, abort
+			loop
+			read from input file
+			write to output file
+			until read files
+			close output file
+			write completion message to screen
+			terminate normally
+		destination file
 
 
 - Even just simple programs make heavy use of the operating system
+
+- systems -> 1000's of system calls/second
+- Application Developers use 'application programming interfaces' (API)
+	- API: specifies a set of functions
+		- parameters passed to functions
+		- return values
+	- 3 most common APIs
+		- Windows API (Windows systems)
+		- POSIX API (POSIX-based systems)
+			(UNIX, Linux, Mac OS X
+		- Java API (Java virtual machine)
+	- Operating system provides library of code
+		- example:
+			libc: programs written in the C language
+			for UNIX and Linux
+	- functions making up an API
+		- invoke actual system calls
+		- example:
+			Windows function 'CreateProcess()'
+			invokes 'NTCreateProcess()' system call
+			in the Windows kernel
+
 	- 
+
+
+2.4 Types of System Calls
+- 6 major categories
+	process control
+	file manipulation
+	device manipulation
+	information maintenance
+	communications
+	protection
+
+- system calls are refered to by generic names
+
+2.4.1 Process Control
+- running program to halt execution:
+	end() 
+		normal
+	abort()
+		abnormal
+
+- system call made to terminate the currently
+  running program abnormally
+  	- dump of memory taken
+	- error message generated
+
+		- debugger examines memory dump
+- OS transfers control to the command interpreter
+	- for normal/abnormal
+- normal and abnormal termination can be defined
+	- e.g. 'level 0' error
+	- command interpreter uses this error level
+	  to determine the next action
+
+- process/job executing a program may want to:
+	- 'load()' and 'execute()' another program
+- wait or jobs to finish execution
+	- 'wait_time()'
+- or wait for an event to occur
+	- 'wait_event()'
+- signal when the event has occurred
+	- 'signal_event()'
+
+- quite often: 2 processes may want to 'share data'
+	- to ensure integrity, 'lock' the shared data
+	- examples:
+		- 'acquire_lock()'
+		- 'release_lock()'
+- for multitasking systems
+	- FreeBSD

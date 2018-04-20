@@ -1,0 +1,8 @@
+2.1 What is the purpose of system calls?
+
+	They're intermediaries for OS services. They control files, 
+	processes, and manipulate devices
+
+2.5 5 Major activities of an OS wrt 'process management'?
+
+	
