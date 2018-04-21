@@ -5,6 +5,7 @@ UNFINISHED
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1. Introduction
+
 - operating system: program to manage hardware
 	- intermediary btwn user and hardware
 - system structure:
@@ -208,6 +209,8 @@ UNFINISHED
 	- device driver loads device controller register
 	- 
 
+
+
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1.3 Computer System Architecture
@@ -275,9 +278,74 @@ UNFINISHED
 		  such as idle and overloaded CPUs
 		- 
 
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.4 Operating-System Structure
+- important aspect of OS 
+	- multiprogramming
+	- single program can't keep CPU and IO devices busy
+	- jobs (code & data) are organized so that
+	  the CPU always has one to execute.
+
+- the OS keeps jobs in memory simultaneously
+- main memory is too small
+	- jobs are kept in the 'job pool'
+	- 'job pool': processes reside on the 'disk'
+- in multiprogrammed systems, the OS switches and executes
+  another job.
+
+- various system resources:
+	CPU
+	memory
+	peripheral devices
+		are utilized effectively.
+
+- 'Time sharing' (multitasking): CPU executes multiple jobs
+  but very quickly. The user can interact w/ each program
+  
+  	- requires an 'interactive' computer system. 
+	  Direct communication btwn user & system.
+	- 'response time' should be short (< 1 sec)
+
+	- many users can share the computer simultaneously.
+	- system switches rapidly from one user to the next.
+
+- each user has at least 1 program in memory
+- programs loaded & executed in memory are called a 'process'
+
+- 'Time-sharing' & 'multiprogramming' requires that several
+  jobs be kept in memory
+- 'job scheduling' is the process of deciding which
+  jobs are brought into memory
+- 'CPU scheduling' is the process of choosing which
+  job will run 1st.
+
+- time sharing system:
+	- reasonable response times are accomplished
+	  by 'swapping'. Processes are swapped in and out
+	  of main memory to the disk.
+	- 'virtual memory': execution of a process that is
+	  not completely in memory. 
+	  Programs larger than actual physical memory can be run.
+	- main memory is abstracted
+		- large, uniform array of storage
+		- logical memory from physical memory
+	- file system provided along with following features:
+		- on a collection of disks.
+		- disk management
+		- resource protection
+		- job synchronization
+		- job communication
+		- deadlock prevention
+
+
+
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1.5 Operating-System Operations
+
 - OS's are interrupt driven
 - events are signaled by 
 	- traps: software interrupt created by an error
@@ -287,7 +355,7 @@ UNFINISHED
   OS's interrupt-driven nature
 - errors in one program should only affect that single program
   and not other processes in other programs
-  	e.g.
+  	example:
 	- a process stuck in an infinite loop could
 	  affect affect other process operations
 
@@ -305,6 +373,7 @@ UNFINISHED
 		supervisor mode
 		system mode
 		privileged mode
+
 - dual modes of operation allow the OS to protect
   from errant users.
   	- harmful instructions are 'privileged instructions'
@@ -342,12 +411,109 @@ UNFINISHED
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1.6 Process Management
+
 - programs do nothing unless CPU executes instruction
-- 
+
+- time-shared user program
+	- compiler
+	- called a 'process'
+
+- a 'process':
+	- job
+	- time-shared program
+	- actually a very general concept
+
+- Chapter 3:
+	- system calls to allow processes to create
+	  subprocesses to execute concurrently.
+
+- processes need certain resources to accomplish their task
+	CPU time
+	memory
+	files
+	IO devices
+
+	initialization data is also passed along
+
+- programs by themselves are not processes:
+	- passive entity: a program like file stored on a disk
+	- active entity: a process
+
+- single-threaded processes have 1 program counter
+  to specify the next instruction to execute.
+
+- 1 instruction is executed on behalf of the process
+- 2 processes may be associated with the same program
+	- 2 separate execution sequences.
+- multithreaded process
+	- multiple program counters
+	- each points to the next instruction
+	  to execute for a given thread.
+
+- process:
+	- unit of work in a system
+	- system: collection of processes
+	- processes:
+		user processes
+		operating system processes
+	- processes can execute concurrently
+		- multiplexing on a single CPU
+
+- operating system responsible for:
+	- scheduling processes and threads on the CPUs
+	- creating & deleting both user and system processes
+	- suspending & resuming processes
+	- mechanism for process syncrhonization
+	- mechanism for process communication
+
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+1.7 Memory Management
+
+- main memory: central to operation
+	- large array of bytes (100 to billions)
+	- each byte: own address
+	- repository of data for CPU and IO device access
+
+- central processor:
+	- instruction-fetch cycle
+	- data-fetch cycle 
+
+- main memory: the only large storage device
+  the CPU is able to address and access directly.
+
+- everything must be in main memory for the CPU to acces them
+
+- program execution:
+	mapped to absolute addresses
+	loaded into memory
+
+- several programs kept in memory to increase CPU utilization
+  and speed
+
+- 'hardware' design of the system is important for:
+	memory-management schemes
+	algorithms used for management schemes
+
+- OS responsibility for memory management:
+	
+	keeping track of which parts of memory
+	are being used and who uses them
+
+	deciding which process & data to move into/out
+	of memory
+
+	de/allocate memory space as needed
+
+
+
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1.8 Storage Management
+
 - To make the computer system convenient
 	- OS: logical & uniform view of info storage.
 	- 'the file' - logical storage unit that serves as 
