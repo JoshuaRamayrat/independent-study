@@ -73,7 +73,7 @@
     user job or the OS. Describe 2 problems for such a scheme
 
 	(My answer)
-
+	
 
 1.9 Timers could be used to compute the current time. Provide a 
     short description of how this could be accomplished.
