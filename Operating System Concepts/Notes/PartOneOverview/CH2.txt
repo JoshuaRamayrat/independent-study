@@ -227,3 +227,66 @@ Operating-System Structures
 		- 'release_lock()'
 - for multitasking systems
 	- FreeBSD
+
+
+
+2.10 SYSTEM BOOT
+
+	- post OS-generation -> hardware-use availability
+	- 'booting': starting and loading the kernel
+	- 'bootstrap program' or 'bootstrap loader'
+		- locates kernel
+		- loads into main memory
+		- starts execution
+	- CPU reset event
+		- instruction register -> predefined memory location
+		- initial bootstrap program
+		- in the form of 'read-only memory (ROM)'
+		- ROM -> no initialization & virus-free
+	- bootstrap program
+		- machine-state diagnostics
+		- system initialization
+			- CPU registers
+			- device controllers
+			- main memory contents
+	- entire OS in ROM
+		- small OSes
+		- bootstrap code to be changed
+			- ROM hardware chip changing
+			- solution: erasable programmable read-only memory
+			  (EPROM)
+	- 'firmware': all forms of ROM
+		- problems with firmware:
+			- slower than RAM
+			- expensive
+			- small
+
+	- for large operating systems
+		Windows
+		Mac OS X
+		UNIX
+
+			- bootstrap loader -> firmware
+			- operating system -> disk
+			- bootstrap
+				- diagnostics
+				- single block @ fixed location
+				- code executed from 'boot block'
+	- boot block
+		- code is sophisticated to load entire OS 
+		  into memory and execute
+		- simple code
+		- knows address on disk
+		- knows bootstrap program length
+	- 'GRUB'
+		- open-source bootstrap program for
+		  Linux systems
+	- 'boot disk' or 'system disk'
+		- disk that has boot partition
+		- OS and bootstrap programs are are changed 
+		  by rewriting new versions to the disk.
+	- system is 'running' when
+		- bootstrap program loaded
+		- OS kernel found
+		- OS kernel loaded into memory
+		- OS kernel starts execution
