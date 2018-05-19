@@ -98,13 +98,19 @@ Operating-System Structures
 
 2.2.2 Graphical User Interfaces
 
+	(skipped)
+
+
 2.2.3 Choice of Interface
+
 - doesn't really matter it's up to the user
 - 'system administrators who manage computers
   power users who have deep knowledge of a system 
   	all frequently use command-line interface
 
+
 2.3 System Calls
+
 - 'system calls': interface to the services made 
 		  available by an operating system
 - routines written in C/C++
@@ -119,6 +125,7 @@ Operating-System Structures
 				- write prompt message to screen
 				- read from keyboard the chars
 				  that define the 2 files
+
 - when both files are set up
 	- enter a loop that:
 		- reads from the input file
@@ -202,10 +209,11 @@ Operating-System Structures
   running program abnormally
   	- dump of memory taken
 	- error message generated
+	- debugger examines memory dump
 
-		- debugger examines memory dump
 - OS transfers control to the command interpreter
 	- for normal/abnormal
+
 - normal and abnormal termination can be defined
 	- e.g. 'level 0' error
 	- command interpreter uses this error level
@@ -213,10 +221,13 @@ Operating-System Structures
 
 - process/job executing a program may want to:
 	- 'load()' and 'execute()' another program
+
 - wait or jobs to finish execution
 	- 'wait_time()'
+
 - or wait for an event to occur
 	- 'wait_event()'
+
 - signal when the event has occurred
 	- 'signal_event()'
 
@@ -225,9 +236,63 @@ Operating-System Structures
 	- examples:
 		- 'acquire_lock()'
 		- 'release_lock()'
+
 - for multitasking systems
 	- FreeBSD
 
+
+2.4.2 File Management
+	- discussed in CH 11 & 12
+	- create() & delete() files
+	- open()
+	- read()
+	- write()
+	- reposition()
+	- file attributes:
+		file name
+		file type
+		protection codes
+		accounting information
+		...
+	- 2 system calls
+		- get_file_attributes()
+		- set_file_attributes()
+	- move()
+	- copy()
+
+
+2.4.3 Device Management
+	- several resources needed to execute a process
+		main memory
+		disk drives
+		access to files
+		...
+	
+		(it waits until sufficient resources are
+		 available)
+	- various resources are 'devices'
+		- physical devices (disk drives)
+		- abstract/virtual devices (files)
+	- for device use:
+		- request()
+		- release()
+
+		(similar to open() & close())
+
+	- once device is requested:
+		read()
+		write()
+		reposition()
+
+	- similarity btwn IO devices and files
+	  to the extent of combining them into a
+	  'file-device structure'.
+	
+	- 
+
+
+
+2.4.4 Information Maintenance
 
 
 2.10 SYSTEM BOOT
