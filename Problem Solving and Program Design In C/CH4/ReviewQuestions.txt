@@ -1,0 +1,119 @@
+1. This is used for making a decision between 2 courses of action:
+	- switch statement
+
+2. 
+	printf("Enter a temperature> ");
+	scanf("%lf, &temp);
+	if (temp > 32.0) 
+		not_freezing();
+	else
+		ice_forming();
+
+	
+	// ice_forming() is called.
+
+3. Write a multiple-alternative if statement to display
+   a message indicating the educational level of a student 
+   based on the student's number of years of schooling.
+
+   	0, none
+	1-5, elementary school
+	6-8, middle school
+	9-12, high school
+	12<, college
+
+   Print a message to indicate bad data as well.
+
+
+	void Education()
+   	{
+   		int level;	
+		printf("Enter the grade level of the student: ");
+		scanf("%d", &level);
+		if (level == 0)
+			printf("none");
+		if (level <= 5 || level >= 1)
+			printf("elementary school");
+		if (level <= 8 || level >= 6)
+			printf("middle school);
+		if (level <= 12 || level >= 9)
+			printf("high school);
+		if (level > 12)
+			printf("college");
+		else 
+			printf("Invalid entry");
+	}
+
+4. Write a switch statement to select an operation based on
+   the value of 'inventory'. 
+   	
+	Increment 'total_paper' by 
+   	'paper_order' if inventory is 'B' or 'C'.
+
+	Increment 'total_ribbon' by 'ribbon_order'
+	if inventory is 'E', 'F', or 'D'.
+
+	Increment 'total_label' by 'label_order'
+	if inventory is 'A' or 'X'.
+
+	Do nothing if inventory is 'M'.
+
+	Display an error message if the value of 
+	inventory is not one of those eight letters.
+
+	#include <stdio.h>
+
+	#define paper_order 1
+	#define ribbon_order 1
+	#define label_order 1
+	
+
+	int main(void)
+	{
+
+		//Error message
+		static const char errorMessage[] = "Invalid Input";
+
+		//incrementing variables
+		int total_paper,
+		    total_ribbon,
+		    total_label;
+
+		char inventory;
+		scanf("%c", &inventory);
+		
+		switch(inventory) 
+		{
+		case 'B':
+		case 'C':
+			total_paper += paper_order;
+		case 'E':
+		case 'F':
+		case 'D':
+			total_ribbon += ribbon_order;
+		case 'A':
+		case 'X':
+			total_label += label_order;
+		case 'M':
+			printf("Nothing.");
+		default:
+			puts(errorMessage);
+		}
+			
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
