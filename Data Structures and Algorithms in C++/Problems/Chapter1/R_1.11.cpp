@@ -34,4 +34,36 @@ class Flower
 }
 
 
+Flower::Flower()
+{
+	name = "N/A";
+	num = 0;
+	price = 100.0;
+}
+
+Flower::Flower(const string& name, int num, float price)
+{
+	flowerName = name;
+	numPedal = num;
+	price = flowerPrice;
+}
+
+Flower::Flower(const Flower& flow)
+{
+	flowerName = flow.flowerName;
+	numPedal = flow.numPedal;
+	flowerPrice = flow.flowerPrice;
+}
+
+int main()
+{
+	cout << "Creating a flower object: " << endl;
+	Flower test1;
+
+	cout << test1.getName() << endl;
+
+	return 0;
+
+	
+}
 
