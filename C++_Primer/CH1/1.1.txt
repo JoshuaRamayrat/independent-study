@@ -1,0 +1,10 @@
+Question: Review your compiler's documentation and explain it's file naming convention. 
+
+Answer:
+
+
+GCC is a compiler collection.
+Language-specific compilers are called "front end".
+The C++ compiler has its own name called "g++".
+
+	g++ treats .c, .h, and .i files as C++ source files.
