@@ -8,9 +8,8 @@
 int main()
 {
 
-	std::cout << "test" << std::endl;
-	int M[10][10];
-	std::cout << "test1" << std::endl;
+	float M[10][10];
+	std::cout << "Original matrix:" << std::endl;
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -22,11 +21,10 @@ int main()
 		std::cout << " " << std::endl;
 	}
 	
-	int transposeM[10][10];
+	float transposeM[10][10];
 
-	std::cout << "Matrix transposed" << std::endl;
 	std::cout << std::endl;
-
+	std::cout << "Matrix transposed:" << std::endl;
 	for (int a = 0; a < 10; a++)
 	{
 		for (int b = 0; b < 10; b++)
