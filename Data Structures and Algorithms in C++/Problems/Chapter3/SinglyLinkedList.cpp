@@ -1,11 +1,7 @@
-// Give an algorithm for finding the penultimate node in a singly
-// linked list. The last element has a NULL next link. 
-//
-// This answer is untested.
+// Implementation of a singly linked list.
 // empty() was never implemented.
 
-
-//Implementation of a singly linked list.
+#include <iostream>
 
 class StringNode
 {
@@ -25,26 +21,9 @@ public:
 	const string& front() const;
 	void addFront(const string& e);
 	void removeFront();
-
-	const StringNode* penUltimate();
-
 private:
 	StringNode* head;
 };
-
-const StringNode* StringLinkedList::penUltimate()
-{
-	StringNode* temp1 = new StringNode;
-	StringNode* temp2 = new StringNode;
-	temp1 = head;
-
-	while (temp2 != NULL)
-	{
-		temp1 = temp1->next;
-		temp2 = temp1->next;
-	}
-	return temp1; 
-}
 
 StringLinkedList::StringLinkedList()
 : head(NULL) { }
@@ -79,6 +58,8 @@ void StringLinkedList::removeFront()
 	head = original->next;
 	delete original;
 }
+
+
 
 
 

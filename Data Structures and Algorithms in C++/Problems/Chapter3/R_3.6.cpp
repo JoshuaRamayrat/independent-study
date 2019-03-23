@@ -1,5 +1,8 @@
 // R-3.6 
 // Add a function size() to the singly linked list so that it runs in O(1) time.
+//
+// This answer is untested.
+// empty() was never implemented.
 
 //Implementation of a singly linked list.
 
