@@ -1,3 +1,5 @@
+//This isn't an exercise problem. I just have it for reference.
+
 #include <iostream>
 
 void drawOneTick(int tickLength, int tickLabel = -1)

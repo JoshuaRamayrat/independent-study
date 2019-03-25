@@ -1,3 +1,4 @@
+// This isn't an exercise problem. I just have it here for reference.
 // Implementation of a singly linked list.
 // empty() was never implemented.
 
@@ -30,11 +31,11 @@ StringLinkedList::StringLinkedList()
 
 StringLinkedList::~StringLinkedList()
 {
-	while (!empty()) 
+	while (!empty())
 		removeFront;
 }
 
-bool StringLinkedList::empty() const 
+bool StringLinkedList::empty() const
 {
 	return HEAD == NULL;
 }
@@ -58,8 +59,3 @@ void StringLinkedList::removeFront()
 	head = original->next;
 	delete original;
 }
-
-
-
-
-
