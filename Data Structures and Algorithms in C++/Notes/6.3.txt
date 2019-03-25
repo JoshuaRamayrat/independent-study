@@ -1,9 +1,0 @@
-6.3 Sequences
-	
-	- Define an abstract data type that generalizes
-	  the vector and list ADT
-
-6.3.1 The Sequence Abstract Data Type
-
-	- sequence: ADT that supports all the functions of the list ADT
-		    Provides functions for accessing elements by index.
