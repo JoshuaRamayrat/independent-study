@@ -3,9 +3,9 @@
 	Q:
 		Deque D contains : (1, 2, 3, 4, 5, 6, 7, 8)
 		Initially empty queue Q.
-		
+
 		No use of variables or objects.
-		Give pseudocode description of a function that uses only D and Q 
+		Give pseudocode description of a function that uses only D and Q
 			Results in D: (1, 2, 3, 5, 4, 6, 7, 8)
 
 An STL queue dynamically resizes itself as new elements are added.
@@ -60,5 +60,3 @@ int main()
 	D.pop_front();
 
 }
-
-

@@ -5,7 +5,8 @@ Question: modify the stack ADT implementation
 */
 
 typedef string Elem;
-template <class T>
+
+template <typename T>
 class LinkedStack
 {
 public:
@@ -20,22 +21,27 @@ private:
 	int n;
 };
 
-LinkedStack::LinkedStack()
+template <typename T>
+LinkedStack<T>::LinkedStack()
 : S(), n(0) { }
 
-int LinkedStack::size() const
+template <typename T>
+int LinkedStack<T>::size() const
 { return n; }
 
-bool LinkedStack::empty() const
+template <typename T>
+bool LinkedStack<T>::empty() const
 { return n == 0; }
 
-const T& LinkedStack::top() const throw(StackEmpty)
+template <typename T>
+const T& LinkedStack<T>::top() const throw(StackEmpty)
 {
 	if (empty()) throw StackEmpty("Top of stack");
 	return S.front();
 }
 
-void LinkedStack::push(const T& e) 
+template <typename T>
+void LinkedStack<T>::push(const T& e)
 {
 	++n;
 	S.addFront(e);
@@ -50,5 +56,5 @@ void LinkedStack::push(const T& e)
 	// - myType is the template parameter
 	//	- it represents a type not specified.
 	// - To use this function template:
-	// 	function_name<type>(parameters);	
+	// 	function_name<type>(parameters);
 */
