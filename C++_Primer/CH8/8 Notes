@@ -1,0 +1,91 @@
+Notes
+
+8.1 The IO Classes
+
+istream provides input operations
+ostream provides output operations
+
+iostream: defines types for reading from and writing to a stream.
+fstream: defines the types to read and write to named files.
+sstream: defines the types for reading and writing to in-memory strings.
+
+Relationships among the IO Types
+
+  - istream
+    - ifstream
+    - istringstream
+
+  - ostream
+    - ofstream
+    - ostringstream
+
+8.1.1 No Copy or Assign for IO Objects
+- We can't copy or assign objects of IO type. Both of the following
+  lines of code result in an error:
+
+      ofstream out1, out2;
+      out1 = out2;
+
+- Functions that pass IO must be a reference and const as reading
+  and writing IO objects change their state.
+
+8.1.2 Condition States
+- The condition state of a stream can be accessed and manipulated
+  by the functions and flags defined by the IO classes.
+
+      strm::iostate
+      strm::badbit
+      strm::failbit
+      strm::eofbit
+      strm::goodbit
+      s.eof()
+      s.fail()
+      s.bad()
+      s.good()
+      s.clear()
+      s.clear(flags)
+      s.setstate(flags)
+      s.rdstate()
+      
+
+8.3 sting Streams
+- The sstream header supports 3 types to support in-memory IO for reading
+  and writing to a string as if it were a stream.
+  - istringstream
+  - ostringstream
+  - stringstream
+
+8.3.1 Using an istringstream
+
+- This is used when operating on an entire line.
+- For example, suppose we have lines consisting of people and their numbers:
+  joshua 4081293182938123
+  beirut 11203910239
+  alexa 302023402034
+
+- example code:
+
+  struct PersonInfo
+  {
+    string name;
+    vector<string> phones;
+  }
+
+  string line, word;
+  vector<PersonInfo> people;
+
+  while (getline(cin, line))
+  {
+    PersonInfo info;
+    istringstream record(line);
+    record >> info.name;
+    while (record >> word)
+    {
+      info.phones.push_back(word);
+    }
+    people.push_back(info);
+  }
+
+8.3.2 Using ostringstreams
+
+-
