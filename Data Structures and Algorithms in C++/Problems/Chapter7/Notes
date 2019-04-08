@@ -1,0 +1,105 @@
+7.1.3 A C++ Tree Interface
+- The following is an informal interface for the tree ADT:
+
+    template <typename E>
+    class Position<E>
+    {
+      public:
+        E& operator*();
+        Position parent() const;
+        PositionList children() const;
+        bool isRoot() const;
+        bool isExternal() const;
+    };
+
+- C++ interface for a tree. Ignoring error processing and keeping
+  the interface simple:
+
+    template <typename E>
+    class Tree<E>
+    {
+      public:
+        class Position;
+        class PositionList;
+      public:
+        int size() const;
+        bool empty() const;
+        Position root() const;
+        PositionList positions() const;
+    };
+
+
+7.1.4 A Linked Structure for General Trees
+- isRoot
+
+7.2 Tree Traversal Algorithms
+7.2.1 Depth and Height
+- 'p' is a node of a tree T.
+- The depth of 'p' is the number of ancestors of 'p', excluding
+  'p' itself.
+- The depth of p's node is defined as follows:
+  - If 'p' is the root, the depth is 0.
+  - If 'p' isn't the root, the depth is 1 + p's parent's depth.
+
+Algorithm: depth(T, p):
+  if p.isRoot() then
+    return 0
+  else
+    return 1 + depth(T, p.parent())
+
+  int depth(const Tree& T, const Position& p)
+  {
+    if (p.isRoot())
+      return 0;
+    else
+      return 1 + depth(T, p.parent());
+  }
+
+- The height of a node 'p' in a tree 'T' is defined recursively.
+  - For an external 'p', height = 0
+  - Otherwise, p's height is 1 + p's child's maximum height.
+
+Algorithm height1(T):
+  h = 0
+  for each p in T.positions() do
+    if p.isExternal() then
+      h = max(h, depth(T,p))
+    return h
+
+Implementation for height1:
+  int height1(const Tree& T)
+  {
+    int h = 0;
+    PositionList nodes = T.positions();
+    for (Iterator q = nodes.begin(); q != nodes.end(); ++q)
+    {
+      if (q->isExternal())
+        h = max(h, depth(T, *q));
+    }
+    return h;
+  }
+
+   - This algorithm is inefficient because it runs in O(n^2)
+
+Algorithm height2(T,p):
+  if p.isExternal() then
+    return 0
+  else
+    h = 0
+    for each q in p.children() do
+      h = max(h,height2(T,q))
+    return 1+h
+
+Implementation for height2:
+  int height2(const Tree& T, const Position& p)
+  {
+    if (p.isExternal())
+      return 0;
+    int h = 0;
+    PositionList ch = p.children();
+    for (Iterator q = ch.begin(); q != ch.end(); ++q)
+    {
+      h = max(h, height2(T, *q));
+    }
+    return 1 + h;
+  }
