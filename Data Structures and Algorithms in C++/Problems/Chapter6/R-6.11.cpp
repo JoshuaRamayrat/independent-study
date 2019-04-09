@@ -29,6 +29,7 @@ class NodeList {
 
 	public:
 		//insert Iterator declaration here...
+		
 	public:
 		NodeList();
 		int size() const;
@@ -41,7 +42,6 @@ class NodeList {
 		void eraseFront();
 		void eraseBack();
 		void erase(const Iterator& p);
-		// housekeeping functions omitted...
 	private:
 		int	n;
 		Node* 	header;
