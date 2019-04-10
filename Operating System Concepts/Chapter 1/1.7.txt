@@ -1,0 +1,6 @@
+1.7 Early computers protected the OS by placing it in a 
+    memory partition that could not be modified by either the 
+    user job or the OS. Describe 2 problems for such a scheme
+
+	(My answer)
+	

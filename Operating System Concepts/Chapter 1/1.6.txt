@@ -1,0 +1,19 @@
+1.6 Which of the following should be 'privileged'?
+	set value of a timer
+	read the clock
+	clear memory
+	issue a trap instruction
+	turn off interrupts
+	modify entries in device-status table
+	switch from user to kernel mode
+	access i/o device
+
+	(My answer)
+	Privileged instructions are 'harmful' if they're
+	modified by the user:
+		set value of a timer
+		clear memory
+		issue a trap instruction
+		turn off interrupts
+		switch from user to kernel mode
+		access i/o device

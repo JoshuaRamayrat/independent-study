@@ -1,0 +1,13 @@
+2.2 What are the 5 major activities of an OS with regard to
+    process management?
+
+    end(): end a running program
+	
+	load(): execute another program
+	
+	create_process(): create a method for one program to create
+			  another program
+	
+	events: waiting for, acting upon, and signaling events
+
+	starting processes

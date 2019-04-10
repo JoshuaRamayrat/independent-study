@@ -1,0 +1,24 @@
+2.9 List 5 services by an OS & explain their user convenience.
+    Explain cases where user-level programs can't provide the services.
+
+	program execution: system must be able to load and end a program
+	
+	I/O operations: for running programs because they require
+			IO from files or devices. 
+
+	file systems: programs need to read/write files and directories
+		      Certain file systems impart specific performance
+		      characteristics and features.
+
+	communication: processes exchange info. implement using shared
+		       memory involving read/write a shared section of 
+		       memory. 
+	
+	resource allocation: resources include the following
+				CPU cycles
+				main memory
+				file storage
+			     	IO devices
+
+			     resources must be allocated for multiple
+			     users and multiple jobs running.

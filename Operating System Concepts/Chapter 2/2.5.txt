@@ -1,0 +1,11 @@
+2.5 What is the purpose of the command interpreter?
+    Why is it usually separate from the kernel?
+
+    	The command interpreter allows users to enter commands
+	to be performed on the OS
+
+	The main function of the interpreter is to get and 
+	execute the next user-specified command.
+
+	The command interpreter is not part of the kernel
+	because it can change to read different commands.

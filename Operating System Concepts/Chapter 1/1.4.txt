@@ -1,0 +1,14 @@
+1.4 There are various definitions for Operating Systems. Argue for 
+    both sides of an OS (not) consisting of web browsers and mail programs.
+    Support your answers
+	
+	(My answer)
+    	This depends on your definition of an OS. If an OS is just
+	the kernel, then web browsers aren't part of the OS as a kernel
+	is designed to "manage a computer's hardware". The web browsers
+	and mail programs are "application programs". They don't have
+	to exist for the computer to work. 
+
+	You could argue they're part of the OS as OSs provide the 
+	environment for application programs to exist. As a result,
+	the application program is part of the OS.

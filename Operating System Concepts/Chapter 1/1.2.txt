@@ -1,0 +1,11 @@
+1.2 We have stressed the need for an OS to efficiently use hardware.
+    When is it okay to 'waste' resources and why is such a system
+    not really 'wasteful'?
+
+	(My answer)
+    	It's okay to use resources for the view of the User. The user
+	should have access to the keyboard, mouse, system unit, and
+	several applications running all at the same time. It would 
+	be hard on the user to have to wait for any single process 
+	to complete. This is a design for 'ease of use'. No attention
+	is paid to 'resource utilization'.

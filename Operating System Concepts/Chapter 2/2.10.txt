@@ -1,0 +1,11 @@
+2.10 Why is the OS stored in firmware vs. disk?
+
+	(unfinished)
+	
+	firmware: example -> program of an embedded system
+		ROM is also firmware
+		slower than RAM
+	
+	They're stored in firmware as opposed to disk depending
+	on their size. Firmware is small, expensive, and slow,
+	making it ideal for small operating systems. 

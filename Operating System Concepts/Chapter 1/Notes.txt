@@ -509,7 +509,6 @@ UNFINISHED
 
 
 
-
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 1.8 Storage Management
@@ -661,3 +660,4 @@ UNFINISHED
 - CH6: scheduling facility to implement real-time functionality in an OS
 - CH9: memory management design for real-time computing.
 - CH18-19: real-time components for Linux and Windows7 OS.
+

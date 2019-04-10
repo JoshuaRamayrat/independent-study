@@ -1,9 +1,10 @@
+/*
 6.2.4 Lists
 
 - The STL list is an example of an STL container.
 - The STL list is implemented as a doubly linked list.
 -
-
+*/
 #include <list>
 using std::list;
 list<float> myList;
@@ -18,7 +19,7 @@ list<float> myList;
   push_back(e)
   pop_front()
   pop_back()
-
+/*
 6.2.5 STL Containers and Iterators
 
 - containers are data structures that store collections of elements.
@@ -34,6 +35,7 @@ list<float> myList;
     map (and multi-map)
 
 - STL iterators provide a uniform mechanism for accessing elements of a container.
+*/
 
   int vectorSum(const vector<int>& inputVec)
   {
@@ -45,7 +47,8 @@ list<float> myList;
     return sum;
   }
 
-  - The above indexing method for accessing elements of inputVec works
+/*
+- The above indexing method for accessing elements of inputVec works
     but not for other types of containers.
 
 STL Iterators
@@ -56,6 +59,7 @@ Using Iterators
 - '++p' returns the updated value of iterator p.
 - 'p++' returns the original value of iterator p.
 -
+*/
 
 int vectorSum(vector<int> V)
 {
@@ -68,9 +72,11 @@ int vectorSum(vector<int> V)
   return sum;
 }
 
+/*
 Const Iterators
 - It's not a good idea to pass a vector by its value.
 - It's better to pass it by its reference so as not to make a copy.
+*/
 
   int vectorSum3(const vector<int>& V)
   {

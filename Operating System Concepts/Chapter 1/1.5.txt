@@ -1,0 +1,8 @@
+1.5 How does the distinction between kernel mode and user mode 
+    function as a rudimentary form of protection (security) system?
+	
+	(My answer)
+    	There are internal applications running that should not be
+	disrupted by the user for the operating system to function
+	correctly. In user mode, the available graphical interfaces
+	prevent the user from accessing critical applications.

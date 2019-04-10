@@ -1,0 +1,5 @@
+2.6 What system calls are executed by the shell to start
+    a new process?
+
+    	fork() 
+	exec()

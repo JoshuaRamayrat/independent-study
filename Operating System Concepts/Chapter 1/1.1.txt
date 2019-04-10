@@ -1,0 +1,6 @@
+1.1 What are the 3 main purposes of an operating system
+	
+	(My answer)
+	Manage computer hardware
+	Provide environment for application programs to run
+	Provide an interface for the system to the user

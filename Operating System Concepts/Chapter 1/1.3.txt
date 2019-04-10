@@ -1,0 +1,6 @@
+1.3 What is the main difficulty that a programmer must overcome
+    when developing an OS for a real-time environment?
+
+	(My answer)
+	Scheduling processes must be done correctly for 
+	a real-time OS to function correctly.
