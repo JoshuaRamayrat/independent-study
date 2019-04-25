@@ -1,124 +1,161 @@
-//
-//  anotherr.c
-//  yesssss
-//
-//  Created by Joshua Ramayrat on 7/20/17.
-//  Copyright © 2017 Joshua Ramayrat. All rights reserved.
-//
-
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
+// Displays the user menu.
+// Inputs and returns as a function value the problem number.
 void get_problem(char * num);
+
+//
 void get_rate_drop_factor(int *rateOut, int *dropFactorOut);
+void get_kg_rate_conc() 
+void get_units_conc()
+void fig_drops_min()
+void fig_ml_hr()
+void by_weight()
+void by_units()
 
 int x;
 
-int main(){
+int main()
+{
     
     int quit = 0;
     
-    //The problem asked to use a sentinel-controlled loop.
-    while (!quit){
-        
-        printf("Intravenous Rate Assistant \n ");
-        printf(")Enter the number of the problem you wish to GIVEN A MEDICAL ORDER IN");
-        printf("\t(1) ml/hr & tubing drop factor  (drops/min)");
-        printf("\t(2) 1L for n hours  (ml/hr)");
-        printf("\t(3) mg/hr or kg/hr & concentration in mg/ml   (ml/hr)");
-        printf("\t(4) units/hr & concentration in units/ml    (ml/hr)");
-        printf("\t(5) QUIT");
-    
-        char charNum;
-        int intNum;
-    
-    
-        problemNum = get_problem(&charNum);
-        printf("You entered %d \n", intNum);
-    
 
-        switch(problemNum){
-        
-                    //This case asks for two values and outputs the answer.
+    //The problem asked to use a sentinel-controlled loop.
+    while (!quit)
+    {
+
+        int problemNum = get_problem();
+        switch(problemNum)
+        {            
+            //This case outputs drops per minute.
             case 1:
-                int a = 1, b = 1;
-                get_rate_drop_factor(&a, &b);
-                
-                //This case asks for one value (hours) and outputs the answer.
+                int dropFactorPerMinute;
+                get_rate_drop_factor(&dropFactorPerMinute);
+                printf("The drop rate per minute is %d.\n", dropFactorPerMinute);
+
+            //This case outputs the rate in mL per hour.
             case 2:
+                int *hours;
+                int mlph;
+
+                printf("Enter the number of hours=> ");
+                scanf("%d", &hours);
+                int mlph = fig_ml_hr(&hours);
+                printf("The rate in milliliters per hour is %d.\n", mlph);
                 
-                
-                //This case should ask for 3 values and output an answer.
+            //This case asks for rate, weight, concentration and outputs mL per hour.
             case 3:
-            
-            
+                int rate;
+                int weight;
+                int concentration;
+
+                get_kg_rate_conc(&rate, &weight, &concentration);
+
+                int mlph = by_weight(&rate, &weight, &concentration);
+                printf("The rate in milliliters per hour is %d.\n", mlph);
+
+            //This case asks for rate, concentration, and outputs mL per hour.
             case 4:
-            
-            
+                int rate2;
+                int concentration2;
+
+                get_units_conc(&rate2, &concentration2);
+                int mlph2 = by_units(&rate2, &concentration2);
+                printf("The rate in milliliters per hour is %d.\n", mlph2);
+
             case 5:
                 quit = 1;
                 break;
-            }
         }
+    }
     
     return 0;
     
 }
 
-int get_problem(char * problem){
-    
-    
-    printf("Enter the number of the problem (1-5) that you want to solve: ");
-    scanf("%c", problem);
-    int x = int(problem)
-    return x;
+int get_problem()
+{
+    int *problemNum;
+    printf("INTRAVENOUS RATE ASSISTANT \n ");
+    printf("Enter the number of the problem you wish to solve. \n");
+    printf("GIVEN A MEDICAL ORDER IN                        CALCULATE RATE IN \n");
+    printf("(1) ml/hr & tubing drop factor                  (drops/min) \n");
+    printf("(2) 1L for n hours                              (ml/hr) \n");
+    printf("(3) mg/hr or kg/hr & concentration in mg/ml     (ml/hr) \n");
+    printf("(4) units/hr & concentration in units/ml        (ml/hr) \n");
+    printf("(5) QUIT");
+
+    printf("\n\nProblem=> ");
+    scanf("%d", &problemNum);
+
+    return problemNum;
     
 }
 
-void get_rate_drop_factor(int *rateOut, int *dropFactorOut){
-    
-    char input1[10];
-    char input2[10];
-    
+//For Problem 1
+//Send the data back to the calling module via output parameters.
+void get_rate_drop_factor(int *dpm)
+{
+
+    int *inputRate, *dropFactor;
     printf("Enter rate in ml/hr : ");
-    fgets(input1, 10, stdin);
+    scanf("%d", &inputRate);
     printf("Enter tubing's drop factor (drops/ml) : ");
-    fgets(input2, 10, stdin);
-    
-    
-    rateOut = malloc(5*sizeof(int));
-    *rateOut = atoi(input1);
-    
-    dropFactorOut = malloc(5*sizeof(int));
-    *dropFactorOut = atoi(input2);
-    
-    
+    scanf("%d", &dropFactor);
+
+    int dpm = fig_drops_min(inputRate, dropFactor);
+
+    printf("The drop rate per minute is %d.\n", dpm);
 }
 
-void get_kg_rate_conc() {
-    
+//For Problem 3.
+void get_kg_rate_conc(int *inputRate, int *inputWeight, int *inputConc) 
+{
+    printf("Enter the rate in mg/kg/hr=> ");
+    scanf("%d", &inputRate);
+    printf("Enter patient weight in kg=> ");
+    scanf("%d", &inputWeight);
+    printf("Enter concentration in mg/ml=> ");
+    scanf("%d", &inputConc);
 }
 
-void get_units_conc(){
-    
+//For Problem 4.
+void get_units_conc(int *inRate, int *inConcentration)
+{
+    printf("Enter rate in units/hr=> ");
+    scanf("%d", &inRate);
+
+    printf("Enter concentration in units/ml => ");
+    scanf("%d", &inConcentration);
+
 }
 
-void fig_drops_min(){
-    
+int fig_drops_min(int inRate, int inDropFactor)
+{
+    int dpm = floor(dropFac*inRate/60);
+    return dpm;
 }
 
-void fig_ml_hr(){
-    
+int fig_ml_hr(int *inputHours)
+{
+    int mlPerHour = floor((1/hours)*1000);
+    return mlPerHour;
 }
 
-void by_weight(){
-    
+int by_weight(int *inRate, int *inWeight, int *inConc)
+{
+    int mlPerHour = floor(inRate*inWeight/inConc);
+    return mlPerHour;
 }
 
-void by_units(){
-    
+int by_units(int *inRate, int *inConcentration)
+{
+    int mlph = inRate/inConcentration;
+    return mlph;
 }
 
 /*
