@@ -43,11 +43,17 @@ int main()
   switch(variableQuestion)
   {
     case 'H':
+      heat_transfer_rate(K, A, T1, T2, X, &variableAnswer);
     case 'K':
+      thermal_conductivity(H, A, T1, T2, X, &variableAnswer);
     case 'A':
+      cross_sectional_area(H, K, T1, T2, X, &variableAnswer);
     case 'T1':
+      temperature1(H, K, A, T2, X, &variableAnswer);
     case 'T2':
+      temperature2(H, K, A, T1, X, &variableAnswer);
     case 'X':
+      distance(H, K, A, T1, T2, &variableAnswer);
       
   }
   
