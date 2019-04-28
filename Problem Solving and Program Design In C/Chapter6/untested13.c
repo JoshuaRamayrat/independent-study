@@ -90,7 +90,7 @@ state transition(state inputState, char inputChar)
        inputState == build_num && (isdigit(inputChar) ||
                                    inputChar = '+'    ||
                                    inputChar = '-'    ||
-                                   inputChar = '.'    ||
+                                   inputChar = '.') )
   {
     return build_num;
   }
@@ -103,7 +103,10 @@ state transition(state inputState, char inputChar)
   if ( inputState == start    &&  isalpha(inputChar) ||
        inputState == build_id && (isalpha(inputChar) ||
                                   isdigit(inputChar) ||
-                                  inputChar = ' ') )
+                                  inputChar = '_'    ||
+                                  inputChar = '+'    ||
+                                  inputChar = '-'    ||
+                                  inputChar = '.') )
   {
     return build_id;
   }
