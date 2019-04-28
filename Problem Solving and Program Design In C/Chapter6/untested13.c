@@ -22,23 +22,22 @@ Notes:
         (8) -> identifier
 
 */
-
 #include <stdio.h>
 #include <math.h>
-#include <ctype.h>
 /*
   ctype allows you to use 'isalpha' and 'isdigit' which return 1 if a data
   type is a character or number and 0 otherwise.
 */
+#include <ctype.h>
 
 enum state { current_state, start, stop, build_id, identifier, build_num, number };
 
-//prototype function(s)
-state transition(int *transitionNum);
+//prototype function
+state transition(state inputState, char inputChar);
 
 int main()
 {
-  //current_state should be an enumerated state type.
+  //current_state might be an enumerated state type.
   //The following code fragment is given in the problem:
   current_state = start;
   do
@@ -62,14 +61,56 @@ int main()
 
   return 0;
 }
+
 /*
+Function transition returns the next state for all the numbered
+transitions of the Finite State Machine.
 It's asked to use 'isalpha' and 'isdigit' with the transition function.
   isdigit : returns 1 if called with a digit character.
             returns 0 otherwise.
   isalpha : returns 1 if called with a char.
             returns 0 otherwise.
 */
-state transition(int *transitionNum)
+state transition(state inputState, char inputChar)
 {
+  if ( inputState == start && inputChar = ' ' )
+  {
+    return start;
+  }
+  if ( inputState == start && inputChar = '.')
+  {
+    return stop;
+  }
+
+  /*
+    It was asked to implement an option for signs and fractional parts
+    in numbers.
+  */
+  if ( inputState == start     &&  isdigit(inputChar) ||
+       inputState == build_num && (isdigit(inputChar) ||
+                                   inputChar = '+'    ||
+                                   inputChar = '-'    ||
+                                   inputChar = '.'    ||
+  {
+    return build_num;
+  }
+
+  if ( inputState == build_num && inputChar = ' ' )
+  {
+    return number;
+  }
+
+  if ( inputState == start    &&  isalpha(inputChar) ||
+       inputState == build_id && (isalpha(inputChar) ||
+                                  isdigit(inputChar) ||
+                                  inputChar = ' ') )
+  {
+    return build_id;
+  }
+
+  if ( inputState == build_id && inputChar = ' ')
+  {
+    return identifier;
+  }
 
 }
