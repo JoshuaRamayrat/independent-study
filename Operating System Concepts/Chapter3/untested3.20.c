@@ -98,8 +98,16 @@ int allocate_pid(void)
   }
 }
 
-// Releases a pid (still in progress)
+/*
+Releases a pid. Should take an input like pid_return.idNumber. 
+*/
 void release_pid(int pid)
 {
-
+  for (int i = 0; i < n; i++)
+  {
+    if (pid = i)
+    {
+      bitmap[i] = 0;
+    }
+  }
 }
