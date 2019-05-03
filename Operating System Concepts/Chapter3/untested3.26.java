@@ -36,12 +36,14 @@ public class echoServer
       // The 'read()' method returns -1 when the client server closes.
       while (client.read())
       {
+
         InputStream in = clientSocket.getInputStream();
         BufferedReader bin = new BufferedReader(new InputStreamReader(in));
         String line = bin.readLine();
 
         PrintWriter pout = new PrintWriter(clientSock.getOutputStream(), true);
         pout.println(line);
+        
       }
     }
   }
