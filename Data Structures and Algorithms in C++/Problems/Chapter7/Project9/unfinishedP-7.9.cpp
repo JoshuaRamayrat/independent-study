@@ -10,16 +10,41 @@ Slicing floorplan data structure design:
   Compact the floor plan.
   Draw the compacted floor plan.
 
-
-*/
-
-/*
-P-7.5.cpp
-Question:
-Implement a Binary Tree using a Linked Structure.
-
 */
 
 #include <iostream>
 #include <vector>
 #include <LinkedBinaryTree.h>
+#include <graphcis.h>
+
+//Function prototypes:
+void createFloorPlan(); 				//Create a single basic rectangle.
+void verticalDecomposeRectangle();		//Decompose the rectangle by a vertical cut.
+void horizontalDecomposeRectangle();	//Decompose the rectangle by a horizontal cut.
+void assignMinHeightandWidth();			//
+void drawSlicingTree();					//
+void compact();							//
+void drawCompact();						//
+
+//Driver 
+int main(void)
+{
+	return(0);
+}
+
+void createFloorPlan(const int inputWidth, const int inputHeight)
+{
+	
+}				
+
+void verticalDecomposeRectangle()	
+
+void horizontalDecomposeRectangle()	
+
+void assignMinHeightandWidth()			
+
+void drawSlicingTree()				
+
+void compact()							
+
+void drawCompact()					

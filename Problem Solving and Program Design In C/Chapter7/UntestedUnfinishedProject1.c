@@ -38,27 +38,38 @@ fgetAnswers also inputs a student's answers.
   I take this to mean return the answers as output parameters as observed in
   the parameters, studentAnswer and correctAnswer.
 */
-void fgetAnswers(const FILE inputFile, char *studentAnswer[], char *correctAnswer[])
+void fgetAnswers(const FILE inputFile, char *correctAnswer[], char *studentAnswer[][], char *studentID[], int* questionCount, int* studentCount);
+void calculatePercentage(const int questionSize, const int studentSize, const char studentAnswers[][], const char correctAnswers[], int* studentPercentages[]);
+void calculateMissedBy();
 
 int main(void)
 {
   char correctAnswers[];
   char studentAnswers[][];
+  char studentIDs[];
+  int arrSize;
   inputFile = fopen("examdat.txt", "r");
 
-  fgetAnswers(inputFile, &correctAnswers[], &studentAnswers[][]);
+  fgetAnswers(inputFile, &correctAnswers[], &studentAnswers[][], &studentIDs[], &arrSize);
+  FILE* reportFile;
 
+  reportFile = fopen("report.txt", "w");
+  fputs("         Exam Report\n", reportFile);
+  fputs("Question 1 2 3 4 5\n", reportFile);
+  fputs("\n", reportFile);
+  fputs("ID     Score(%)\n", reportFile);
+  
   
 
   return (0);
 }
 //array[][] - 1st [] are rows. 2nd [] are columns.
-void fgetAnswers(const FILE inputFile, char *correctAnswer[], char *studentAnswer[][])
+void fgetAnswers(const FILE inputFile, char *correctAnswer[], char *studentAnswer[][], char *studentID[], int* questionCount, int* studentCount)
 {
   /*
     Algorithm Design:
       Append the number of answers to character variable.
-      Convert that character variable to an integer.
+      onvert that character variable to an integer.
       Skip the space after the answer count.
       Place the rest of the correct answers in the buf variable.
       Set the output parameter, correctAnswer[], equal to buf.
@@ -94,8 +105,48 @@ void fgetAnswers(const FILE inputFile, char *correctAnswer[], char *studentAnswe
       nonAnswerBag[i] = getc(inputFile);
       i += 1;
     }
+    studentID[j] = nonAnswerBag;
     fgets(studentAnswerBag[j], intAnswerCount, inputFile);
     j += 1;
   }
   studentAnswers[][] = studentAnswerBag[][];
+}
+
+/*
+  Calculate the percentage of each student.
+*/
+void calculatePercentage(int questionSize, const int studentSize, 
+                         const char studentAnswers[][], const char correctAnswers[], 
+                         double* studentPercentages[]);
+{
+
+  for (int a = 0; a < studentSize; a++)
+  {
+    double sumOfCorrectAnswers = 0;
+    for (int b = 0; b < questionSize; b++)
+    {
+      if (studentAnswers[a][b] = correctAnswers[b])
+      {
+        sumOfCorrectAnswers += 1;
+      }
+    }
+    studentPercentages[a] = sumOfCorrectAnswers/questionSize * 100;
+  }
+}
+
+void calculateMissedBy()
+{
+
+  for (int a = 0; a < studentSize; a++)
+  {
+    for (int b = 0; b < questionSize; b++)
+    {
+      if (studentAnswers[a][b] = correctAnswers[b])
+      {
+        sumOfCorrectAnswers += 1;
+      }
+    }
+    studentPercentages[a] = sumOfCorrectAnswers/questionSize * 100;
+  }
+
 }
