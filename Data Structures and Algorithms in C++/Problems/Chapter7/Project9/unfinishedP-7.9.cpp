@@ -38,13 +38,14 @@ void createFloorPlan(const int inputWidth, const int inputHeight)
 }				
 
 void verticalDecomposeRectangle()	
-
+{}
 void horizontalDecomposeRectangle()	
-
+{}
 void assignMinHeightandWidth()			
-
+{}
 void drawSlicingTree()				
-
+{}
 void compact()							
-
+{}
 void drawCompact()					
+{}
