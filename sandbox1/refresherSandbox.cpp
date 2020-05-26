@@ -1,6 +1,9 @@
 /*
-    this is a refresher 
+    this is a refresher on the syntax for C/C++
 */
+////////////////////////////////////////////////////////////
+/////////////// typedef specifier //////////////////////////
+////////////////////////////////////////////////////////////
 
 /*
     typedef specifier
@@ -35,6 +38,30 @@ S* ps2;
 long unsigned typedef int long ullong;
 
 /*
+    typedef enum
+
+    1) typedef simplifies declaring a variable
+    2) enums help you avoid magic numbers
+        enums help you map variables to 0, 1, 2, ...
+        example:
+            enum {
+                STOP,
+                CAUTION,
+                GO
+            }
+
+            ^ the above 'enum' is more handy than the following:
+            #define STOP    0
+            #define CAUTION 1
+            #define GO      2
+*/
+
+////////////////////////////////////////////////////////////
+/////////////// callbacks in C /////////////////////////////
+////////////////////////////////////////////////////////////
+
+/*
+
     callbacks in C
         executable code passed as an argument to other code
         
@@ -107,6 +134,13 @@ extern int foo(int arg1, int arg2);
     allows you to use other forms of header guard coding.
     ARM recommends #ifndef and #define bc it's more portable.
 
+#pragma once is a non-standard preprocessor directive 
+for including the corresponding file only once at compilation.
+advantages:
+    less code
+    avoids name clashes
+    improves compile speed
+
 */
 
 #ifndef FILE_FOO
@@ -116,3 +150,11 @@ extern int foo(int arg1, int arg2);
 //////
 
 #endif
+
+/////////////////////////////////////////////////
+/////////////// wrapper functions ///////////////
+/////////////////////////////////////////////////
+
+// A wrapper function is a subroutine in a software library
+// designed to call another subroutine. 
+// They abstract away the details of software implementations.
