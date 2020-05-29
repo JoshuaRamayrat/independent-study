@@ -91,6 +91,36 @@ static void write_gatt_char_v2(void* context, const void* caller, MblMwGattCharW
 
 Enabling Notifications
 
+For requesting characteristic notfiications. 
+
 */
 
-#include "MetaWearApi/metawear/core/"
+#include "MetaWearApi/metawear/core/status.h"
+#include "unordered_map"
+
+using std::unordered_map;
+
+static unordered_map<const void*, MblMwFnIntVoidPtrArray> notify_handlers;
+
+static void enable_char_notify(void* context, const void* caller, const MblMwGattChar* characteristic, MblMwFnIntVoidPtrArray handler, MblMwFnVoidVoidPtrInt ready)
+{
+    notify_handlers.insert({ caller, handler });
+    ready(caller, MBL_MW_STATUS_OK);
+}
+
+/*
+
+Disconnect Handler
+
+For when bluetooth connection is lost.
+
+'on_disconnect' field is passed a function pointer to the BLE wrapper for handling disconnect event handlers.
+
+*/
+
+static unordered_map<const void*, MblMwFnVoidVoidPtrInt> dc_handlers;
+
+static void on_disconnect(void* context, const void* caller, MblMwFnVoidVoidPtrInt handler)
+{
+    dc_handlers.insert({ caller, handler });
+}
